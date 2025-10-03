@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_nomina"
+        android:icon="@drawable/logo_admin_rh"
+        android:title="Nómina" />
+
+    <item
+        android:id="@+id/nav_reporte_nomina"
+        android:icon="@drawable/logo_admin_rh"
+        android:title="Reporte" />
+</menu>

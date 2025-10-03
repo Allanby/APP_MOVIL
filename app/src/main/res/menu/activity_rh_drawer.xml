@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_empleados"
+        android:icon="@drawable/logo_admin_rh"
+        android:title="Empleados" />
+
+    <item
+        android:id="@+id/nav_permisos"
+        android:icon="@drawable/logo_admin_rh"
+        android:title="Permisos" />
+
+    <item
+        android:id="@+id/nav_contratos"
+        android:icon="@drawable/logo_admin_rh"
+        android:title="Contratos" />
+
+    <item
+        android:id="@+id/nav_reportes"
+        android:icon="@drawable/logo_admin_rh"
+        android:title="Reportes" />
+
+</menu>
