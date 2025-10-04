@@ -20,19 +20,19 @@ class RolesSeleccionActivity : AppCompatActivity() {
 
         // Abrir Recursos Humanos
         btnRRHH.setOnClickListener {
-            val intent = Intent(this, RhMenuActivity::class.java) // 👈 RH
+            val intent = Intent(this, RhMenuActivity::class.java) // RH
             startActivity(intent)
         }
 
         // Abrir Nómina
         btnNomina.setOnClickListener {
-            val intent = Intent(this, NominaActivity::class.java) // 👈 Nómina
+            val intent = Intent(this, NominaActivity::class.java) // Nómina
             startActivity(intent)
         }
 
         // Abrir Gerencia
         btnGerencia.setOnClickListener {
-            val intent = Intent(this, GerenciaActivity::class.java) // 👈 Gerencia
+            val intent = Intent(this, GerenciaActivity::class.java) //  Gerencia
             startActivity(intent)
         }
     }

@@ -3,39 +3,32 @@
     android:id="@+id/nav_header"
     android:layout_width="match_parent"
     android:layout_height="180dp"
-    android:background="#0B1578"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?attr/selectableItemBackgroundBorderless"
     android:gravity="bottom"
     android:orientation="vertical"
     android:padding="16dp"
+    android:background="@drawable/back_menu"
+
     android:theme="@style/ThemeOverlay.Material3.Dark">
 
-    <!-- Logo o avatar -->
+
     <ImageView
         android:id="@+id/nav_header_imageView"
-        android:layout_width="72dp"
-        android:layout_height="72dp"
-        android:src="@mipmap/ic_launcher_round"
-        android:contentDescription="@string/app_name" />
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/logo_admin_rh" />
 
-    <!-- Nombre -->
-    <TextView
-        android:id="@+id/nav_header_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="12dp"
-        android:text="RRHH"
-        android:textColor="@android:color/white"
-        android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
 
-    <!-- Subtítulo / correo -->
     <TextView
         android:id="@+id/nav_header_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="RECURSOS HUMANOS"
+        android:text="@string/headermenu"
+        android:textSize="20sp"
+        android:fontFamily="@font/times"
         android:textColor="@android:color/white"
         android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
 

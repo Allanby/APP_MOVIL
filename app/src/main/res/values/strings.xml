@@ -35,11 +35,15 @@
     <string name="login_olvidar">¿Olvidaste tu contraseña?</string>
     <string name="login_bienvenido">¡Bienvenido a AdminRH!</string>
 
+    //menuheader
+    <string name="headermenu">Recursos Humanos</string>
+    <string name="headermenunomina">Nómina</string>
+    <string name="headermenugerencia">Gerencia</string>
 
-
-
-
-
+    //nombre de toolbar
+    <string name="namme_gerencia">Gerencia</string>
+    <string name="namme_rrhh">Recursos Humanos</string>
+    <string name="namme_nomina">Gestión de nómina</string>
 
 
 

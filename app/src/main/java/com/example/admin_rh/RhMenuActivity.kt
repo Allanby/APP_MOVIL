@@ -65,7 +65,7 @@ class RhMenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
             supportFragmentManager.beginTransaction()
                 .replace(R.id.content_frame, defaultFragment)
                 .commit()
-            supportActionBar?.title = getString(R.string.app_name) // Or "Welcome"
+            supportActionBar?.title = getString(R.string.namme_rrhh) // Or "Welcome"
             // If you have a "Home" or "Welcome" item in your nav drawer, check it:
             // navigationView.setCheckedItem(R.id.nav_home)
         }

@@ -23,10 +23,10 @@ class GerenciaActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.fragment_gerencia)  // 👈 usa el layout de gerencia
+        setContentView(R.layout.fragment_gerencia)  // layout de gerencia
 
         drawerLayout = findViewById(R.id.drawer_layout_gerencia)
-        val toolbar: Toolbar = findViewById(R.id.toolbar_main) // 👈 viene de app_bar_main.xml
+        val toolbar: Toolbar = findViewById(R.id.toolbar_main) // app_bar_main.xml
         setSupportActionBar(toolbar)
 
         // Configuración del Drawer
@@ -56,9 +56,9 @@ class GerenciaActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
                 getString(R.string.welcome_message)
             )
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, defaultFragment) // 👈 asegurate que tengas un container
+                .replace(R.id.fragment_container, defaultFragment) // tener un container
                 .commit()
-            supportActionBar?.title = getString(R.string.app_name)
+            supportActionBar?.title = getString(R.string.namme_gerencia)
         }
     }
 

@@ -4,5 +4,7 @@
     <color name="white">#FFFFFF</color>
     <color name="btnColor">#000080</color>
     <color name="blue_navy">#0B1578</color>
+    <color name="back">#80111DA7</color>
+
 
 </resources>

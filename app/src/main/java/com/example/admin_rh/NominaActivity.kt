@@ -22,11 +22,12 @@ class NominaActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_nomina) // 👈 usa tu layout limpio
+        setContentView(R.layout.fragment_nomina) // usalayo ut limpio
 
         // Toolbar
         val toolbar: Toolbar = findViewById(R.id.toolbar_nomina)
         setSupportActionBar(toolbar)
+        supportActionBar?.title = "Gestión de nómina"
 
         // DrawerLayout
         drawerLayout = findViewById(R.id.drawer_layout_nomina)
@@ -60,9 +61,9 @@ class NominaActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                 getString(R.string.welcome_message)
             )
             supportFragmentManager.beginTransaction()
-                .replace(R.id.content_frame_nomina, defaultFragment) // 👈 usa el FrameLayout de fragment_nomina.xml
+                .replace(R.id.content_frame_nomina, defaultFragment) //
                 .commit()
-            supportActionBar?.title = getString(R.string.app_name)
+            supportActionBar?.title = getString(R.string.namme_nomina)
         }
     }
 
@@ -73,11 +74,11 @@ class NominaActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         when (item.itemId) {
             R.id.nav_nomina -> {
                 Toast.makeText(this, "Planillas", Toast.LENGTH_SHORT).show()
-                // Aquí más adelante podés abrir un fragmento de Nómina
+                // para abrir un fragment de nomina o un activity layout
             }
             R.id.nav_reportes -> {
                 Toast.makeText(this, "Descuentos", Toast.LENGTH_SHORT).show()
-                // Aquí igual podés mandar a un fragmento de Reportes
+
             }
         }
 
