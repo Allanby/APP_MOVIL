@@ -10,8 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.adminrh.R
 
 class LoginActivity : AppCompatActivity() {
-    private val user = ""
-    private val pass = ""
+    private val user = "sexo"
+    private val pass = "sexo"
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
