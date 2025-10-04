@@ -18,34 +18,34 @@
         android:minHeight="?attr/actionBarSize"
         app:title="Selecciona un rol"
         app:titleCentered="true"
+        app:titleTextAppearance="@style/ToolbarTitleText"
         app:titleTextColor="@android:color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Logo -->
     <ImageView
         android:id="@+id/logo"
         android:layout_width="247dp"
-        android:layout_height="138dp"
-        android:layout_marginTop="32dp"
-        android:contentDescription="Logo"
+        android:layout_height="125dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/logoDescripcion"
         android:scaleType="centerCrop"
         android:src="@drawable/logo_admin_rh"
-        app:layout_constraintTop_toBottomOf="@id/materialToolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.451"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/materialToolbar" />
 
-    <!-- Texto principal -->
     <TextView
         android:id="@+id/txtTituloRol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:fontFamily="sans-serif-black"
-        android:text="Selecciona tu rol para continuar:"
+        android:fontFamily="@font/timesbold"
+        android:text="@string/menu_texto"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/logo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -67,16 +67,17 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="@null"
-            android:contentDescription="RRHH"
+            android:contentDescription="@string/menu_rh"
             android:scaleType="fitCenter"
-            android:src="@drawable/rhrh"/>
+            android:src="@drawable/rhrh" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="RRHH"
-            android:textSize="16sp"
+            android:text="@string/menu_rh"
+            android:textSize="18sp"
+            android:fontFamily="@font/times"
             android:textStyle="bold"
             android:textColor="@android:color/black"/>
     </LinearLayout>
@@ -108,7 +109,8 @@
             android:layout_marginTop="8dp"
             android:text="Nómina"
             android:textColor="@android:color/black"
-            android:textSize="16sp"
+            android:textSize="18sp"
+            android:fontFamily="@font/times"
             android:textStyle="bold"/>
     </LinearLayout>
 
@@ -137,9 +139,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Gerencia"
+            android:text="@string/menu_gerencia"
             android:textColor="@android:color/black"
-            android:textSize="16sp"
+            android:textSize="18sp"
+            android:fontFamily="@font/times"
             android:textStyle="bold"/>
     </LinearLayout>
 

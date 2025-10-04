@@ -2,9 +2,47 @@
     <string name="app_name">AdminRH</string>
     <string name="navigation_drawer_open">open</string>
     <string name="navigation_drawer_close">close</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="welcome">Welcome</string>
-    <string name="welcome_message">Welcome to AdminRH</string>
+    <string name="welcome_message">¡Bienvenido a AdminRH!</string>
+    <string name="logoDescripcion">logo</string>
+    <string name="menu_rh">RRHH</string>
+    <string name="menu_gerencia">Gerencia</string>
+
+    <string name="menu_texto">Seleccione su rol para continuar:</string>
+
+    //nav empleados
+    <string name="menulateral_empleados">Empleados</string>
+    <string name="menulateral_permisos">Permisos</string>
+    <string name="menulateral_contratos">Contratos</string>
+    <string name="menulateral_reportes">Reportes</string>
+
+
+    //nav nomina
+    <string name="menunomina_nomina">Nómina</string>
+    <string name="menunomina_reportes">Reporte</string>
+
+    //nav gerencia
+    <string name="menugerencia_cargo">Cargos</string>
+    <string name="menugerencia_jornada">Jornadas</string>
+    <string name="menugerencia_departamentos">Departamentos</string>
+
+    //login
+    <string name="login_usuario">Usuario:</string>
+    <string name="login_password">Contraseña:</string>
+    <string name="login_btn">Iniciar sesión</string>
+    <string name="login_olvidar">¿Olvidaste tu contraseña?</string>
+    <string name="login_bienvenido">¡Bienvenido a AdminRH!</string>
+
+
+
+
+
+
+
+
+
+
 
 </resources>
