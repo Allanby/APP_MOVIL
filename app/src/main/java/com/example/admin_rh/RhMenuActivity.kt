@@ -61,13 +61,12 @@ class RhMenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
             val defaultFragment = WelcomeFragment.newInstance(
                 getString(R.string.welcome),
                 getString(R.string.welcome_message)
-            ) // Use WelcomeFragment
+            )
             supportFragmentManager.beginTransaction()
                 .replace(R.id.content_frame, defaultFragment)
                 .commit()
-            supportActionBar?.title = getString(R.string.namme_rrhh) // Or "Welcome"
-            // If you have a "Home" or "Welcome" item in your nav drawer, check it:
-            // navigationView.setCheckedItem(R.id.nav_home)
+            supportActionBar?.title = getString(R.string.namme_rrhh)
+
         }
 
     }
