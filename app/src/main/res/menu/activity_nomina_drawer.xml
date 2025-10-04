@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_nomina"
-        android:icon="@drawable/logo_admin_rh"
-        android:title="Nómina" />
+        android:icon="@drawable/ic_payments_24"
+        android:title="@string/menunomina_nomina" />
 
     <item
         android:id="@+id/nav_reporte_nomina"
-        android:icon="@drawable/logo_admin_rh"
-        android:title="Reporte" />
+        android:icon="@drawable/ic_download_24"
+        android:title="@string/menunomina_reportes" />
 </menu>

@@ -3,22 +3,22 @@
 
     <item
         android:id="@+id/nav_empleados"
-        android:icon="@drawable/logo_admin_rh"
-        android:title="Empleados" />
+        android:icon="@drawable/ic_baseline_people_24"
+        android:title="@string/menulateral_empleados" />
 
     <item
         android:id="@+id/nav_permisos"
-        android:icon="@drawable/logo_admin_rh"
-        android:title="Permisos" />
+        android:icon="@drawable/ic_calendar_clock_24"
+        android:title="@string/menulateral_permisos" />
 
     <item
         android:id="@+id/nav_contratos"
-        android:icon="@drawable/logo_admin_rh"
-        android:title="Contratos" />
+        android:icon="@drawable/ic_contract_24dp"
+        android:title="@string/menulateral_contratos" />
 
     <item
         android:id="@+id/nav_reportes"
-        android:icon="@drawable/logo_admin_rh"
-        android:title="Reportes" />
+        android:icon="@drawable/ic_download_24"
+        android:title="@string/menulateral_reportes" />
 
 </menu>

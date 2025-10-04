@@ -2,16 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_cargo"
-        android:icon="@drawable/logo_admin_rh"
-        android:title="Cargo" />
+        android:icon="@drawable/ic_work_24"
+        android:title="@string/menugerencia_cargo" />
 
     <item
         android:id="@+id/nav_jornada"
-        android:icon="@drawable/logo_admin_rh"
-        android:title="Jornada" />
+        android:icon="@drawable/ic_timer_24"
+        android:title="@string/menugerencia_jornada" />
 
     <item
         android:id="@+id/nav_departamento"
-        android:icon="@drawable/logo_admin_rh"
-        android:title="Departamento" />
+        android:icon="@drawable/ic_apartment_24"
+        android:title="@string/menugerencia_departamentos" />
 </menu>
