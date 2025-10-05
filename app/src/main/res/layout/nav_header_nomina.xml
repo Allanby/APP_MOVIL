@@ -3,11 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:id="@+id/nav_header_nomina"
         android:layout_width="match_parent"
         android:layout_height="180dp"
-        android:background="#0B1578"
+        android:background="@drawable/back_menu"
         android:clickable="true"
         android:focusable="true"
         android:foreground="?attr/selectableItemBackgroundBorderless"
@@ -19,9 +19,9 @@
         <!-- Logo o ícono de nómina -->
         <ImageView
             android:id="@+id/nav_header_imageView_nomina"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:src="@mipmap/ic_launcher_round"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/logo_admin_rh"
             android:contentDescription="@string/app_name" />
 
         <!-- Nombre -->
@@ -29,19 +29,12 @@
             android:id="@+id/nav_header_title_nomina"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="12dp"
-            android:text="NÓMINA"
+            android:text="@string/headermenunomina"
+            android:fontFamily="@font/times"
+            android:textSize="20sp"
             android:textColor="@android:color/white"
             android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
 
-        <!-- Subtítulo -->
-        <TextView
-            android:id="@+id/nav_header_subtitle_nomina"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="GESTIÓN DE NÓMINA"
-            android:textColor="@android:color/white"
-            android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
 
     </LinearLayout>
 

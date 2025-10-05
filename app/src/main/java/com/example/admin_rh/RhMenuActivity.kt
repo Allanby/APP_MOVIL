@@ -1,8 +1,12 @@
 package com.example.admin_rh.ui.rh
 
+import android.content.res.ColorStateList
+import android.graphics.Color
+import androidx.core.content.ContextCompat
+
 import android.os.Bundle
+
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -11,27 +15,27 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import com.example.admin_rh.RolesSeleccionActivity
 import com.example.adminrh.EmpleadosRH
 import com.example.adminrh.R
 import com.google.android.material.navigation.NavigationView
-import com.example.adminrh.WelcomeFragment
+
 
 class RhMenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var toggle: ActionBarDrawerToggle
+    private lateinit var navigationView: NavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_rh) // You'll need to create this layout file
+        setContentView(R.layout.fragment_rh)
 
         // Toolbar
-        val toolbar: Toolbar = findViewById(R.id.toolbar_main) // Assuming toolbar ID is in activity_rh_menu.xml
+        val toolbar: Toolbar = findViewById(R.id.toolbar_main)
         setSupportActionBar(toolbar)
+        toolbar.setTitleTextColor(Color.WHITE)
 
         // DrawerLayout
-        drawerLayout = findViewById(R.id.drawer_layout_rh) // Assuming drawer ID is in activity_rh_menu.xml
+        drawerLayout = findViewById(R.id.drawer_layout_rh)
 
         // Toggle
         toggle = ActionBarDrawerToggle(
@@ -43,8 +47,9 @@ class RhMenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         )
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
+        toggle.drawerArrowDrawable.color = Color.WHITE // ícono del menú blanco
 
-        // Insets - Apply to the root view of your activity layout if needed
+        // Insets
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(android.R.id.content)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -52,54 +57,49 @@ class RhMenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         }
 
         // NavigationView
-        val navigationView: NavigationView = findViewById(R.id.nav_view_rh) // Assuming nav view ID is in activity_rh_menu.xml
+        navigationView = findViewById(R.id.nav_view_rh)
         navigationView.setNavigationItemSelectedListener(this)
+        navigationView.itemIconTintList = null // conserva colores originales si quieres íconos multicolor
 
-        // Default fragment
-        // Load WelcomeFragment by default
+        ///navigationView.setItemTextColor(
+            //ColorStateList.valueOf(ContextCompat.getColor(this, R.color.blue_navy))
+      //  ) //para poner el color al texto de cada item del menu
+
+
         if (savedInstanceState == null) {
-            val defaultFragment = WelcomeFragment.newInstance(
-                getString(R.string.welcome),
-                getString(R.string.welcome_message)
-            ) // Use WelcomeFragment
+            val defaultFragment = EmpleadosRH()
             supportFragmentManager.beginTransaction()
                 .replace(R.id.content_frame, defaultFragment)
                 .commit()
-            supportActionBar?.title = getString(R.string.app_name) // Or "Welcome"
-            // If you have a "Home" or "Welcome" item in your nav drawer, check it:
-            // navigationView.setCheckedItem(R.id.nav_home)
-        }
+            supportActionBar?.title = getString(R.string.namme_rrhh)
 
+            // Seleccionar item en NavigationView
+            navigationView.setCheckedItem(R.id.nav_empleados)
+        }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        var selectedFragment: Fragment? = null
-        var fragmentTitle = getString(R.string.app_name)
-        when (item.itemId) {
-            R.id.nav_empleados -> selectedFragment = EmpleadosRH()
-            R.id.nav_permisos -> selectedFragment = WelcomeFragment()
-            R.id.nav_contratos -> Toast.makeText(this, "Contratos", Toast.LENGTH_SHORT).show()
-            R.id.nav_reportes -> Toast.makeText(this, "Reportes", Toast.LENGTH_SHORT).show()
+        val selectedFragment: Fragment? = when(item.itemId) {
+            R.id.nav_empleados -> EmpleadosRH()
+            else -> null
         }
-        if (selectedFragment != null) {
+
+        val fragmentTitle: String = when(item.itemId) {
+            R.id.nav_empleados -> getString(R.string.namme_rrhh)
+            else -> getString(R.string.app_name)
+        }
+
+        selectedFragment?.let {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.content_frame, selectedFragment)
+                .replace(R.id.content_frame, it)
                 .commit()
-            supportActionBar?.title = fragmentTitle // Update toolbar title
         }
+
+        supportActionBar?.title = fragmentTitle
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
 
-    // It's good practice to also handle the Up button in the toolbar if you have a drawer
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (toggle.onOptionsItemSelected(item)) {
-            return true
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
-    // Close the drawer when the back button is pressed if it's open
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {

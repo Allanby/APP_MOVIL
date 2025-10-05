@@ -27,7 +27,7 @@
             android:layout_height="match_parent">
 
         </FrameLayout>
-        <!-- ^^^^^^^^^ ESTE ES TU content_frame ^^^^^^^^^ -->
+
 
 
 
@@ -39,6 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:menu="@menu/activity_rh_drawer" />    <!-- Tu archivo de menú -->
+        app:headerLayout="@layout/nav_header_rh"
+        app:menu="@menu/activity_rh_drawer" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -12,7 +12,6 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.example.adminrh.R
-import com.example.adminrh.WelcomeFragment
 import com.google.android.material.navigation.NavigationView
 
 class NominaActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -22,11 +21,12 @@ class NominaActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_nomina) // 👈 usa tu layout limpio
+        setContentView(R.layout.fragment_nomina) // usalayo ut limpio
 
         // Toolbar
         val toolbar: Toolbar = findViewById(R.id.toolbar_nomina)
         setSupportActionBar(toolbar)
+        supportActionBar?.title = "Gestión de nómina"
 
         // DrawerLayout
         drawerLayout = findViewById(R.id.drawer_layout_nomina)
@@ -52,45 +52,42 @@ class NominaActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         // NavigationView
         val navigationView: NavigationView = findViewById(R.id.nav_view_nomina)
         navigationView.setNavigationItemSelectedListener(this)
+        navigationView.itemIconTintList = null
 
-        // Default fragment (WelcomeFragment)
-        if (savedInstanceState == null) {
-            val defaultFragment = WelcomeFragment.newInstance(
-                getString(R.string.welcome),
-                getString(R.string.welcome_message)
-            )
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.content_frame_nomina, defaultFragment) // 👈 usa el FrameLayout de fragment_nomina.xml
-                .commit()
-            supportActionBar?.title = getString(R.string.app_name)
-        }
+        val defaultFragment = Fragment_item_nomina()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.content_frame_nomina, defaultFragment)
+            .commit()
+        supportActionBar?.title = getString(R.string.namme_nomina)
+
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        var selectedFragment: Fragment? = null
-        var fragmentTitle = getString(R.string.app_name)
-
-        when (item.itemId) {
-            R.id.nav_nomina -> {
-                Toast.makeText(this, "Planillas", Toast.LENGTH_SHORT).show()
-                // Aquí más adelante podés abrir un fragmento de Nómina
-            }
-            R.id.nav_reportes -> {
-                Toast.makeText(this, "Descuentos", Toast.LENGTH_SHORT).show()
-                // Aquí igual podés mandar a un fragmento de Reportes
-            }
+        val selectedFragment: Fragment? = when(item.itemId) {
+            R.id.nav_nomina -> Fragment_item_nomina()
+            R.id.nav_reporte_nomina -> Fragment_item_reportes_nomina()
+            else -> null
         }
 
-        if (selectedFragment != null) {
+        val fragmentTitle: String = when(item.itemId) {
+            R.id.nav_nomina -> getString(R.string.namme_nomina)
+            R.id.nav_reporte_nomina -> getString(R.string.menunomina_reportes)
+            else -> getString(R.string.app_name)
+        }
+
+        selectedFragment?.let {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.content_frame_nomina, selectedFragment)
+                .replace(R.id.content_frame_nomina, it)
                 .commit()
-            supportActionBar?.title = fragmentTitle
         }
+
+
+        supportActionBar?.title = fragmentTitle
 
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (toggle.onOptionsItemSelected(item)) {
