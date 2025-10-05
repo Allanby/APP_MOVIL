@@ -48,6 +48,7 @@ class GerenciaActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
         // Configuración del NavigationView
         val navigationView: NavigationView = findViewById(R.id.nav_view_gerencia)
         navigationView.setNavigationItemSelectedListener(this)
+        navigationView.itemIconTintList = null
 
         // Fragment por defecto
         if (savedInstanceState == null) {

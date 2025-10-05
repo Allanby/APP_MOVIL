@@ -52,6 +52,7 @@ class NominaActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         // NavigationView
         val navigationView: NavigationView = findViewById(R.id.nav_view_nomina)
         navigationView.setNavigationItemSelectedListener(this)
+        navigationView.itemIconTintList = null
 
         val defaultFragment = Fragment_item_nomina()
         supportFragmentManager.beginTransaction()
