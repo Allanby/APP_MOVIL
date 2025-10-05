@@ -10,8 +10,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.adminrh.R // CAMBIA ESTO AL R de tu módulo de app (Admin_RH.app.main)
-import com.example.api.models.rh.Employee // Importa tu modelo Employee
-import com.example.api.models.rh.EmployeeDepartamentResponse
 import com.example.api.models.rh.EmployeeTotalResponse
 
 class EmployeeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

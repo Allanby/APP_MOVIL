@@ -1,4 +1,4 @@
-package com.example.api
+package com.example.api.models.rh
 
 import android.annotation.SuppressLint
 import android.util.Log
@@ -45,4 +45,3 @@ class empleadosViewModel : ViewModel() {
 
 
 }
-

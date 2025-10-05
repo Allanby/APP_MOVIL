@@ -1,11 +1,5 @@
-package com.example.api
+package com.example.api.models.rh
 
-import com.example.api.models.rh.EmployeeActivos
-import com.example.api.models.rh.EmployeeByAgeRange
-import com.example.api.models.rh.EmployeeByCategory
-import com.example.api.models.rh.EmployeeByContract
-import com.example.api.models.rh.EmployeeDepartamentResponse
-import com.example.api.models.rh.EmployeeTotalResponse
 import retrofit2.http.GET
 
 
@@ -20,7 +14,7 @@ interface ApiClient {
 
     // 🔹 Empleados agrupados por género (hombres/mujeres)
     @GET("empleados/genero")
-    suspend fun getEmployeesByGender(): List<EmployeeByCategory>
+    suspend fun getGenderDistribution(): List<GenderCount>
 
     // 🔹 Empleados agrupados por departamento
     @GET("empleados/departamento")
@@ -36,8 +30,6 @@ interface ApiClient {
 
     // 🔹 Empleados agrupados por rango de edad
     @GET("empleados/edad")
-    suspend fun getEmployeesByAgeRange(): List<EmployeeByAgeRange>
+    suspend fun getAgeDistribution(): List<AgeRangeCount>
 }
 
-
-// OPCIONAL, FILTRAR POR CATEGORIA esto va a depender de mis enpoinds de la api
