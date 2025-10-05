@@ -16,22 +16,33 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.api.AgeViewModel
 import com.example.api.GenderViewModel
 import com.example.api.adapters.EmployeeAdapter // Importa tu EmployeeAdapter
 import com.example.api.departamentosViewModel
+import com.example.api.models.rh.AgeRangeCount
 import com.example.api.models.rh.empleadosViewModel // Importa tu ViewModel
 import com.example.api.models.rh.DepartamentoAdapter
 import com.example.api.models.rh.EmployeeDepartamentResponse
 import com.example.api.models.rh.EmployeeTotalResponse
 import com.example.api.models.rh.GenderCount
+import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.charts.PieChart
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.data.BarData
+import com.github.mikephil.charting.data.BarDataSet
+import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.formatter.PercentFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
 
 class EmpleadosRH : Fragment() {
+
+    //INSTANCIA DE LOS VIEWMODEL
+    private val ageRangeViewModel: AgeViewModel by viewModels()
 
     private val viewModel: empleadosViewModel by viewModels()
     private val viewModelDepartamentos: departamentosViewModel by viewModels()
@@ -42,6 +53,10 @@ class EmpleadosRH : Fragment() {
     private lateinit var totalEmpleadosTextView: TextView
     private lateinit var recyclerView: RecyclerView
     private lateinit var pieChart: PieChart
+
+    //linkear el grafico  del fragmeng empleadosrh
+    private lateinit var barchar: BarChart // Para el gráfico de barras
+
     private lateinit var adapter: DepartamentoAdapter // Adapter para el RecyclerView
     // Para mostrar cuando la lista está vacía
 
@@ -51,6 +66,7 @@ class EmpleadosRH : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_empleados_r_h, container, false) // Tu layout con RecyclerView
         pieChart = view.findViewById(R.id.pieChartGender)// se inicializa la variable pieChart
+        barchar = view.findViewById(R.id.barcharRango) // se inicializa la variable barchar para el gráfico de barras
        // recyclerView = view.findViewById(R.id.recyclerView_empleados) // ID del RecyclerView en tu XML
         progressBar = view.findViewById(R.id.progress) // ID del ProgressBar en tu XML
         // ID del TextView de lista vacía
@@ -59,7 +75,31 @@ class EmpleadosRH : Fragment() {
         recyclerView = view.findViewById(R.id.recyclerDepartamentos)
         // Configurar el pie chart
         setupPieChart()
+        setupbarchar()
         return view
+    }
+
+    private fun setupbarchar() {
+    barchar.apply {
+        description.isEnabled = false // Oculta la descripción del gráfico
+        setPinchZoom(false) // Deshabilita el zoom con dos dedos
+        setDrawBarShadow(false) // No dibujar sombra detrás de las barras
+        setDrawGridBackground(false) // No dibujar un fondo de rejilla
+        legend.isEnabled = false // Oculta la leyenda (puedes habilitarla si lo deseas)
+
+        // Configuración del eje X (etiquetas de rangos de edad)
+        xAxis.position = XAxis.XAxisPosition.BOTTOM // Posición de las etiquetas
+        xAxis.setDrawGridLines(false) // No dibujar líneas de rejilla verticales
+        xAxis.granularity = 1f // Intervalo mínimo entre etiquetas
+        xAxis.setAvoidFirstLastClipping(true) // Evita que la primera y última etiqueta se corten
+
+        // Configuración del eje Y izquierdo (conteo de empleados)
+        axisLeft.setDrawGridLines(true) // Dibujar líneas de rejilla horizontales
+        axisLeft.axisMinimum = 0f // Valor mínimo del eje Y
+
+        // Deshabilitar el eje Y derecho
+        axisRight.isEnabled = false
+    }
     }
 
     @SuppressLint("SetTextI18n")
@@ -68,7 +108,9 @@ class EmpleadosRH : Fragment() {
 
         observeViewModel() // Observar cambios en el ViewModel de generoViewModel
         //cargar los datos del viewModel
+        observeViewModelAge()
         genderViewModel.loadGenderData()
+        ageRangeViewModel.loadAgeData() // Cargar datos de edad
         setupRecyclerView()
         viewModel.load()
         // ASIGNAR el valor del LiveData al TextView
@@ -98,6 +140,52 @@ class EmpleadosRH : Fragment() {
             progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
         }
         )
+    }
+    // Nueva función para observar el ViewModel de rangos de edad
+    private fun observeViewModelAge() {
+        ageRangeViewModel.ageData.observe(viewLifecycleOwner) { ageList ->
+            if (ageList != null && ageList.isNotEmpty()) {
+                updateBarChart(ageList)
+            }
+        }
+
+        ageRangeViewModel.loading.observe(viewLifecycleOwner) { isLoading ->
+            progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+            barchar.visibility = if (isLoading) View.INVISIBLE else View.VISIBLE
+        }
+
+        ageRangeViewModel.error.observe(viewLifecycleOwner) { errorMessage ->
+            errorMessage?.let {
+                Toast.makeText(context, it, Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    // Nueva función para actualizar el gráfico de barras
+    private fun updateBarChart(data: List<AgeRangeCount>) {
+        val entries = ArrayList<BarEntry>()
+        val labels = ArrayList<String>()
+
+        // Recorre los datos para crear las entradas del gráfico y las etiquetas
+        data.forEachIndexed { index, ageRange ->
+            // El eje X será el índice, y el eje Y será el total de empleados
+            entries.add(BarEntry(index.toFloat(), ageRange.total.toFloat()))
+            // Guarda la etiqueta del rango de edad
+            labels.add(ageRange.rango)
+        }
+
+        // Asigna las etiquetas al eje X del gráfico
+        barchar.xAxis.valueFormatter = IndexAxisValueFormatter(labels)
+
+        val dataSet = BarDataSet(entries, "Empleados por Rango de Edad")
+        dataSet.colors = ColorTemplate.MATERIAL_COLORS.toList() // Asigna una paleta de colores
+        dataSet.setDrawValues(true) // Muestra los valores numéricos sobre las barras
+
+        val barData = BarData(dataSet)
+        barData.barWidth = 0.5f // Ancho de las barras
+
+        barchar.data = barData
+        barchar.invalidate() // Refresca el gráfico para mostrar los datos
     }
 
     private fun observeViewModel() {

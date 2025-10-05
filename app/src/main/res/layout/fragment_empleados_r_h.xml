@@ -72,12 +72,50 @@
         android:clipToPadding="false"
         tools:listitem="@layout/item_employee" />
 
-    <!-- En fragment_empleados_r_h.xml -->
-    <com.github.mikephil.charting.charts.PieChart
-        android:id="@+id/pieChartGender"
+    <!-- barchart de rango de edades -->
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="16dp" />
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Rango de edades"/>
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="250dp"
+        android:id="@+id/barcharRango"/>
+
+
+
+    <!-- En fragment_empleados_r_h.xml -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Empleados por género" />
+
+    <!-- Contenedor para los dos gráficos en una fila -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <!-- Gráfico de pastel 1 (original) -->
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/pieChartGender"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <!-- Gráfico de pastel 2 (nuevo) -->
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/pieChartGender2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+    </LinearLayout>
 
 
 
