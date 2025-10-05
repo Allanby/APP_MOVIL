@@ -7,17 +7,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.api.models.rh.ApiClient
-import com.example.api.models.rh.GenderCount // Asegúrate de importar tu modelo
+import com.example.api.models.rh.GenderCount
 import com.example.api.models.rh.RetrofitHelper
 import kotlinx.coroutines.launch
-import java.io.IOException
 
 class GenderViewModel : ViewModel() {
 
     // LiveData para los datos procesados del gráfico.
     // Usaremos un Pair<Int, Int> para guardar (Hombres, Mujeres).
-    private val _genderData = MutableLiveData<Pair<Int, Int>?>()
-    val genderData: LiveData<Pair<Int, Int>?> = _genderData
+    private val _genderData = MutableLiveData<List<GenderCount>>()
+    val genderData: LiveData<List<GenderCount>> = _genderData
 
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> = _loading
@@ -36,23 +35,16 @@ class GenderViewModel : ViewModel() {
                 Log.d("ViewModelLoadGender", "Fetching gender distribution...")
 
 
-                val response: ArrayList<GenderCount> = RetrofitHelper.create().create(
-                    ApiClient::class.java
-                ).getCount()
+                val response: List<GenderCount> = RetrofitHelper.create().create(ApiClient::class.java).getGenderDistribution()
+                _genderData.postValue(response)
+                Log.d("Data","$response")
 
-                // ✅ Procesar la respuesta
-                val hombres = response.find { it.gender == "M" }?.total ?: 0
-                val mujeres = response.find { it.gender == "F" }?.total ?: 0
-
-                // ✅ Publicar el resultado procesado en LiveData
-                _genderData.postValue(Pair(hombres, mujeres))
-
-                Log.d("ViewModelLoadGender", "Datos procesados: Hombres=$hombres, Mujeres=$mujeres")
+                //Log.d("ViewModelLoadGender", "Datos procesados: Hombres=$hombres, Mujeres=$mujeres")
 
             } catch (e: Exception) {
                 Log.e("ViewModelLoadGender", "Error fetching gender data: ${e.message}", e)
                 _error.value = e.message ?: "Error de red"
-                _genderData.postValue(Pair(0, 0))
+                _genderData.postValue(emptyList())
                 _loading.value = false
             } finally {
                 _loading.value = false

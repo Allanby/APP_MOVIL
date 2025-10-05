@@ -1,8 +1,6 @@
 package com.example.api.models.rh
 
 import retrofit2.http.GET
-import com.example.api.models.rh.GenderCount
-
 
 
 interface ApiClient {
@@ -32,8 +30,6 @@ interface ApiClient {
 
     // 🔹 Empleados agrupados por rango de edad
     @GET("empleados/edad")
-    suspend fun getEmployeesByAgeRange(): List<EmployeeByAgeRange>
+    suspend fun getAgeDistribution(): List<AgeRangeCount>
 }
 
-
-// OPCIONAL, FILTRAR POR CATEGORIA esto va a depender de mis enpoinds de la api
