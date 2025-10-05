@@ -1,12 +1,8 @@
-package com.example.api
+package com.example.api.models.rh
 
-import com.example.api.models.rh.EmployeeActivos
-import com.example.api.models.rh.EmployeeByAgeRange
-import com.example.api.models.rh.EmployeeByCategory
-import com.example.api.models.rh.EmployeeByContract
-import com.example.api.models.rh.EmployeeDepartamentResponse
-import com.example.api.models.rh.EmployeeTotalResponse
 import retrofit2.http.GET
+import com.example.api.models.rh.GenderCount
+
 
 
 interface ApiClient {
@@ -20,7 +16,7 @@ interface ApiClient {
 
     // 🔹 Empleados agrupados por género (hombres/mujeres)
     @GET("empleados/genero")
-    suspend fun getEmployeesByGender(): List<EmployeeByCategory>
+    suspend fun getGenderDistribution(): List<GenderCount>
 
     // 🔹 Empleados agrupados por departamento
     @GET("empleados/departamento")

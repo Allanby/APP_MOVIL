@@ -6,9 +6,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.api.models.rh.ApiClient
 import com.example.api.models.rh.EmployeeDepartamentResponse
+import com.example.api.models.rh.RetrofitHelper
 import kotlinx.coroutines.launch
-import retrofit2.Response
 
 class departamentosViewModel : ViewModel() {
     private val _loading = MutableLiveData(false)
@@ -30,7 +31,8 @@ class departamentosViewModel : ViewModel() {
             try {
                 _loading.value = true
                 Log.d("ViewModelLoadDepartamento", "Fetching departamento...")
-                val response: ArrayList<EmployeeDepartamentResponse> = RetrofitHelper.create().create(ApiClient::class.java).getEmployeesByDepartment() // MAKE SURE THIS RETURNS List<Employee>
+                val response: ArrayList<EmployeeDepartamentResponse> = RetrofitHelper.create().create(
+                    ApiClient::class.java).getEmployeesByDepartment() // MAKE SURE THIS RETURNS List<Employee>
                 _totalEmpleadosDepartamento.postValue(response)
                 Log.d("Data","$response")
             } catch (e: Exception) {

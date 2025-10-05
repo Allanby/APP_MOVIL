@@ -72,6 +72,14 @@
         android:clipToPadding="false"
         tools:listitem="@layout/item_employee" />
 
+    <!-- En fragment_empleados_r_h.xml -->
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/pieChartGender"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="16dp" />
+
+
 
 
 </LinearLayout>

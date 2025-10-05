@@ -1,4 +1,4 @@
-package com.example.api.models
+package com.example.api.models.rh
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -6,8 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.adminrh.R // Importa tu clase R para acceder a los layouts y vistas
-import com.example.api.models.rh.EmployeeDepartamentResponse
+import com.example.adminrh.R
 
 // El adaptador recibe una lista de EmployeeDepartamentResponse
 class DepartamentoAdapter(
@@ -54,4 +53,3 @@ class DepartamentoAdapter(
         notifyDataSetChanged() // Notifica al RecyclerView que los datos han cambiado
     }
 }
-

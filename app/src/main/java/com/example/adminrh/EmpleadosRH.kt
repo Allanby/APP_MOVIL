@@ -16,8 +16,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.api.adapters.EmployeeAdapter // Importa tu EmployeeAdapter
 import com.example.api.departamentosViewModel
-import com.example.api.empleadosViewModel // Importa tu ViewModel
-import com.example.api.models.DepartamentoAdapter
+import com.example.api.models.rh.empleadosViewModel // Importa tu ViewModel
+import com.example.api.models.rh.DepartamentoAdapter
 import com.example.api.models.rh.EmployeeDepartamentResponse
 import com.example.api.models.rh.EmployeeTotalResponse
 
