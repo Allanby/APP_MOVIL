@@ -10,76 +10,216 @@
         android:layout_height="wrap_content"
         android:padding="16dp">
 
+        <!-- Card Número de permisos este mes -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:elevation="8dp"
+            android:layout_marginTop="24dp"
+            android:elevation="12dp"
             app:cardCornerRadius="24dp"
-            app:cardBackgroundColor="@color/blue_navy">
+            app:cardBackgroundColor="@color/blue_navy"
+            app:cardUseCompatPadding="true">
 
-            <!-- Contenedor interno para alinear ícono + texto -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:padding="28dp">
+                android:padding="24dp">
 
                 <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    app:tint="@color/white"
+                    android:id="@+id/imagePermisosMes"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="16dp"
                     android:src="@drawable/ic_timer_24"
-                    android:layout_marginEnd="16dp"/>
+                    app:tint="@android:color/white"/>
 
-                <TextView
-                    android:id="@+id/textPermisosMes"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/Defecto_cardpermes"
-                    android:textSize="28sp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/timesbold"
-                    android:textColor="@android:color/white"/>
-            </LinearLayout>
+                    android:orientation="vertical">
 
+                    <TextView
+                        android:id="@+id/textPermisosMesTitulo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Permisos solicitados este mes"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/timesbold"
+                        android:textColor="@android:color/white"/>
+
+                    <TextView
+                        android:id="@+id/textPermisosMes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/timesbold"
+                        android:textColor="@android:color/white"/>
+                </LinearLayout>
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
+        <!-- Card Promedio días -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:elevation="8dp"
+            android:layout_marginTop="24dp"
+            android:elevation="12dp"
             app:cardCornerRadius="24dp"
-            app:cardBackgroundColor="@color/rosita">
+            app:cardBackgroundColor="@color/rosita"
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center_horizontal"
-                android:padding="14dp">
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="24dp">
 
-                <TextView
-                    android:id="@+id/tituloPromedioPermisos"
+                <ImageView
+                    android:id="@+id/imagePromedioDias"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="16dp"
+                    android:src="@drawable/ic_average_24"
+                    app:tint="@android:color/white"/>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
-                    android:fontFamily="@font/timesbold"
-                    android:text="Promedio de días de permisos"
-                    android:textColor="@android:color/white"
-                    android:textSize="26sp"
-                    android:textStyle="bold" />
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textPromedioDias"
+                    <TextView
+                        android:id="@+id/textPromedioDiasTitulo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Promedio de días de permisos"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/timesbold"
+                        android:textColor="@android:color/white"/>
+
+                    <TextView
+                        android:id="@+id/textPromedioDias"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/timesbold"
+                        android:textColor="@android:color/white"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Card Días perdidos -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:elevation="12dp"
+            app:cardCornerRadius="24dp"
+            app:cardBackgroundColor="@color/verde"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="24dp">
+
+                <ImageView
+                    android:id="@+id/imageDiasPerdidos"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="16dp"
+                    android:src="@drawable/weekend_24"
+                    app:tint="@android:color/white"/>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Dias: -"
-                    android:textSize="18sp"
-                    android:textColor="@android:color/white"/>
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textDiasPerdidosTitulo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Días perdidos por permisos"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/timesbold"
+                        android:textColor="@android:color/white"/>
+
+                    <TextView
+                        android:id="@+id/textDiasPerdidos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/timesbold"
+                        android:textColor="@android:color/white"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Card Género más permisos -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:elevation="12dp"
+            app:cardCornerRadius="24dp"
+            app:cardBackgroundColor="@color/blue_navy"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="24dp">
+
+                <ImageView
+                    android:id="@+id/imageGenero"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="16dp"
+                    android:src="@drawable/ic_gender"
+                    app:tint="@android:color/white" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textGeneroTitulo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Género con más permisos"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/timesbold"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/textGeneroTotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="M - 0"
+                        android:textSize="22sp"
+                        android:fontFamily="@font/timesbold"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

@@ -15,15 +15,23 @@ class ScrollingFragmentPermisos : Fragment(R.layout.fragment_scrolling_permisos)
 
     private lateinit var textPermisos: TextView
     private lateinit var textPromedioDias: TextView
+    private lateinit var textDiasPerdidos: TextView
+
+    private lateinit var textGeneroTotal: TextView
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         textPermisos = view.findViewById(R.id.textPermisosMes)
         textPromedioDias = view.findViewById(R.id.textPromedioDias)
+        textDiasPerdidos = view.findViewById(R.id.textDiasPerdidos)
+        textGeneroTotal = view.findViewById(R.id.textGeneroTotal)
 
         fetchPermisos()
         fetchPromedioPermisos()
+        fetchDiasPerdidos()
+        fetchGeneroMasPermisos()
     }
 
     //permisos por mes
@@ -62,5 +70,44 @@ class ScrollingFragmentPermisos : Fragment(R.layout.fragment_scrolling_permisos)
             }
         }
     }
+
+    //dias perdidos
+
+    private fun fetchDiasPerdidos() {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val response = retrofitPrueba.api.getDiasPerdidos()
+                withContext(Dispatchers.Main) {
+                    textDiasPerdidos.text = "${response.dias_perdidos} días"
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                withContext(Dispatchers.Main) {
+                    textDiasPerdidos.text = getString(R.string.errormensaje)
+                }
+            }
+        }
+    }
+
+
+    //genemo con mas permisos
+    private fun fetchGeneroMasPermisos() {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val response = retrofitPrueba.api.getPermisosGenero()
+                withContext(Dispatchers.Main) {
+                    val generoNombre = if(response.genero == "M") "Masculino" else "Femenino"
+                    textGeneroTotal.text = "$generoNombre - ${response.total_permisos}"
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                withContext(Dispatchers.Main) {
+                    textGeneroTotal.text =  getString(R.string.errormensaje)
+                }
+            }
+        }
+    }
+
 }
+
 
