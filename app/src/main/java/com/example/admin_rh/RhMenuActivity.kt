@@ -1,8 +1,6 @@
 package com.example.admin_rh.ui.rh
 
-import android.content.res.ColorStateList
 import android.graphics.Color
-import androidx.core.content.ContextCompat
 
 import android.os.Bundle
 
@@ -15,6 +13,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import com.example.admin_rh.ScrollingFragmentContratos
+import com.example.admin_rh.ScrollingFragmentPermisos
 import com.example.adminrh.EmpleadosRH
 import com.example.adminrh.R
 import com.google.android.material.navigation.NavigationView
@@ -59,7 +59,7 @@ class RhMenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         // NavigationView
         navigationView = findViewById(R.id.nav_view_rh)
         navigationView.setNavigationItemSelectedListener(this)
-        navigationView.itemIconTintList = null // conserva colores originales si quieres íconos multicolor
+        navigationView.itemIconTintList = null // conserva colores originales de lo iconos
 
         ///navigationView.setItemTextColor(
             //ColorStateList.valueOf(ContextCompat.getColor(this, R.color.blue_navy))
@@ -81,11 +81,15 @@ class RhMenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         val selectedFragment: Fragment? = when(item.itemId) {
             R.id.nav_empleados -> EmpleadosRH()
+            R.id.nav_permisos -> ScrollingFragmentPermisos()
+            R.id.nav_contratos -> ScrollingFragmentContratos()
             else -> null
         }
 
         val fragmentTitle: String = when(item.itemId) {
             R.id.nav_empleados -> getString(R.string.namme_rrhh)
+            R.id.nav_permisos -> getString(R.string.namme_permisos)
+            R.id.nav_contratos -> getString(R.string.namme_contratos)
             else -> getString(R.string.app_name)
         }
 

@@ -1,4 +1,4 @@
-package com.example.admin_rh   // 👈 mantené el mismo paquete con guion bajo
+package com.example.admin_rh
 
 import android.os.Bundle
 import android.view.MenuItem
@@ -38,7 +38,6 @@ class GerenciaActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
-        // Ajuste de insets (pantallas edge-to-edge)
         ViewCompat.setOnApplyWindowInsetsListener(drawerLayout) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -57,7 +56,7 @@ class GerenciaActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
                 getString(R.string.welcome_message)
             )
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, defaultFragment) // tener un container
+                .replace(R.id.fragment_container, defaultFragment)
                 .commit()
             supportActionBar?.title = getString(R.string.namme_gerencia)
         }

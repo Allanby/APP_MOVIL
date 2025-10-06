@@ -31,5 +31,16 @@ interface ApiClient {
     // 🔹 Empleados agrupados por rango de edad
     @GET("empleados/edad")
     suspend fun getAgeDistribution(): List<AgeRangeCount>
+
+
+
+    //APIS DE PERMISO
+    //
+    @GET("permisos/mes")
+    suspend fun getPermisosMes(): PermisoMesResponse
+
+    @GET("permisos/promedio")
+    suspend fun getPromedioPermisos(): PromedioPermisosResponse
+
 }
 
