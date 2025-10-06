@@ -48,5 +48,8 @@ interface ApiClient {
 
     @GET("permisos/genero")
     suspend fun getPermisosGenero(): PermisosGeneroResponse
+
+    @GET("permisos/departamento-popular")
+    suspend fun getDepartamentoPermisos(): PermisoDepartamentoResponse
 }
 

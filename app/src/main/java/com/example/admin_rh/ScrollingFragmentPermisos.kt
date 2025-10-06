@@ -16,8 +16,8 @@ class ScrollingFragmentPermisos : Fragment(R.layout.fragment_scrolling_permisos)
     private lateinit var textPermisos: TextView
     private lateinit var textPromedioDias: TextView
     private lateinit var textDiasPerdidos: TextView
-
     private lateinit var textGeneroTotal: TextView
+    private lateinit var textDepartamentoTotal: TextView
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -27,11 +27,13 @@ class ScrollingFragmentPermisos : Fragment(R.layout.fragment_scrolling_permisos)
         textPromedioDias = view.findViewById(R.id.textPromedioDias)
         textDiasPerdidos = view.findViewById(R.id.textDiasPerdidos)
         textGeneroTotal = view.findViewById(R.id.textGeneroTotal)
+        textDepartamentoTotal = view.findViewById(R.id.textDepartamentoTotal)
 
         fetchPermisos()
         fetchPromedioPermisos()
         fetchDiasPerdidos()
         fetchGeneroMasPermisos()
+        fetchDepartamentoPopular()
     }
 
     //permisos por mes
@@ -103,6 +105,24 @@ class ScrollingFragmentPermisos : Fragment(R.layout.fragment_scrolling_permisos)
                 e.printStackTrace()
                 withContext(Dispatchers.Main) {
                     textGeneroTotal.text =  getString(R.string.errormensaje)
+                }
+            }
+        }
+    }
+
+    //Departamento con mpas permisos
+    private fun fetchDepartamentoPopular() {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val response = retrofitPrueba.api.getDepartamentoPermisos()
+                withContext(Dispatchers.Main) {
+                    // Actualiza la card con los datos
+                    textDepartamentoTotal.text = "${response.departamento} - ${response.total_permisos}"
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                withContext(Dispatchers.Main) {
+                    textDepartamentoTotal.text = getString(R.string.errormensaje)
                 }
             }
         }
