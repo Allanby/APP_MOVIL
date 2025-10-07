@@ -60,6 +60,8 @@ interface ApiClient {
     @GET("contratos/vigentes")
     suspend fun getContratosVigentes(): ContratosVigentesResponse
 
+    @GET("contratos/por-genero")
+    suspend fun getContratosPorGenero(): List<ContratoGeneroResponse>
 
 }
 

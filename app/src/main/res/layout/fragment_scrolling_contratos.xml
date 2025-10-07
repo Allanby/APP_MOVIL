@@ -123,6 +123,18 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
+        <com.anychart.AnyChartView
+            android:id="@+id/chartContratosGenero"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="20dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintTop_toBottomOf="@id/cardContratosVigentes"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>
