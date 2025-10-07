@@ -2,6 +2,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:layout_marginTop="75dp"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -10,11 +11,11 @@
         android:layout_height="wrap_content"
         android:padding="16dp">
 
-        <!-- Card Número de permisos este mes -->
+
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="15dp"
             android:elevation="12dp"
             app:cardCornerRadius="24dp"
             app:cardBackgroundColor="@color/blue_navy"
@@ -116,7 +117,7 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Card Días perdidos -->
+
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -169,7 +170,7 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Card Género más permisos -->
+
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

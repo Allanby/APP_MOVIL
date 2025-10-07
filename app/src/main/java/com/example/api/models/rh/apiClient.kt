@@ -51,5 +51,15 @@ interface ApiClient {
 
     @GET("permisos/departamento-popular")
     suspend fun getDepartamentoPermisos(): PermisoDepartamentoResponse
+
+
+    //APIS DE CONTRATPS
+    @GET("contratos/promedio-meses")
+    suspend fun getPromedioMeses(): PromedioContratos
+
+    @GET("contratos/vigentes")
+    suspend fun getContratosVigentes(): ContratosVigentesResponse
+
+
 }
 

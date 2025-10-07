@@ -24,7 +24,7 @@
             android:scaleType="centerCrop"
             android:layout_marginTop="40dp"
             android:contentDescription="@string/app_name"
-            app:srcCompat="@mipmap/ic_logo" />
+            android:src="@drawable/logo_admin_rh" />
 
 
         <!-- Subtítulo -->
@@ -34,8 +34,9 @@
             android:layout_marginTop="8dp"
             android:fontFamily="@font/times"
             android:textStyle="italic"
+            android:textColor="@color/black"
             android:text="@string/login_bienvenido"
-            android:textSize="20sp" />
+            android:textSize="22sp" />
 
         <!-- Campo usuario (antes correo electrónico) -->
         <TextView
@@ -43,7 +44,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:fontFamily="@font/timesbold"
-            android:text="Ingresa tu usuario y contraseña"
+            android:textColor="@color/black"
+            android:text="@string/loginleyenda"
             android:textSize="20sp" />
 
         <EditText
@@ -57,7 +59,8 @@
             android:hint="@string/login_usuario"
             android:inputType="textPersonName"
             android:textSize="18sp"
-
+            android:textColor="@color/black"
+            android:textColorHint="@color/blue_navy"
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
             android:paddingTop="8dp"
@@ -75,8 +78,9 @@
             android:fontFamily="@font/times"
             android:hint="@string/login_password"
             android:inputType="textPassword"
+            android:textColorHint="@color/blue_navy"
             android:textSize="18sp"
-
+            android:textColor="@color/black"
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
             android:paddingTop="8dp"

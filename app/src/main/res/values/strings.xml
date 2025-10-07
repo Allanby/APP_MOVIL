@@ -144,4 +144,10 @@
     <string name="dep1">Departamento con más permisos</string>
     <string name="dep2">Nombre - 0</string>
 
+    //contratos
+    <string name="con1">Duración promedio</string>
+
+    <string name="con2">Contratos vigentes</string>
+    <string name="loginleyenda">Ingresa tu usuario y contraseña</string>
+
 </resources>
