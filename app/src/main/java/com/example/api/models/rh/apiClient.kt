@@ -31,37 +31,5 @@ interface ApiClient {
     // 🔹 Empleados agrupados por rango de edad
     @GET("empleados/edad")
     suspend fun getAgeDistribution(): List<AgeRangeCount>
-
-
-
-    //APIS DE PERMISO
-    //
-    @GET("permisos/mes")
-    suspend fun getPermisosMes(): PermisoMesResponse
-
-    @GET("permisos/promedio")
-    suspend fun getPromedioPermisos(): PromedioPermisosResponse
-
-
-    @GET("permisos/diasperdidos")
-    suspend fun getDiasPerdidos(): DiasPerdidosResponse
-
-    @GET("permisos/genero")
-    suspend fun getPermisosGenero(): PermisosGeneroResponse
-
-    @GET("permisos/departamento-popular")
-    suspend fun getDepartamentoPermisos(): PermisoDepartamentoResponse
-
-
-    //APIS DE CONTRATPS
-    @GET("contratos/promedio-meses")
-    suspend fun getPromedioMeses(): PromedioContratos
-
-    @GET("contratos/vigentes")
-    suspend fun getContratosVigentes(): ContratosVigentesResponse
-
-    @GET("contratos/por-genero")
-    suspend fun getContratosPorGenero(): List<ContratoGeneroResponse>
-
 }
 

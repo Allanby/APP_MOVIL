@@ -43,5 +43,7 @@ class empleadosViewModel : ViewModel() {
         }
     }
 
+    // api para obtener empleados tipo de contrato
+
 
 }

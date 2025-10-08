@@ -82,7 +82,7 @@
     <com.github.mikephil.charting.charts.BarChart
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="250dp"
+        android:minHeight="160dp"
         android:id="@+id/barcharRango"/>
 
 
@@ -97,23 +97,23 @@
     <!-- Contenedor para los dos gráficos en una fila -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="230dp"
         android:orientation="horizontal"
         android:layout_marginTop="16dp">
 
         <!-- Gráfico de pastel 1 (original) -->
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/pieChartGender"
-            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:layout_width="0dp"/>
 
         <!-- Gráfico de pastel 2 (nuevo) -->
         <com.github.mikephil.charting.charts.PieChart
-            android:id="@+id/pieChartGender2"
+            android:id="@+id/pieChartContractType"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 
