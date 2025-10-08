@@ -65,7 +65,6 @@ class EmpleadosRH : Fragment() {
         totalEmpleadosTextView = view.findViewById(R.id.totalEmpleados)
         recyclerView = view.findViewById(R.id.recyclerDepartamentos)
 
-        // --- CORRECCIÓN CLAVE ---
         // Las funciones de SETUP solo configuran la apariencia, no los datos.
         setupGenderPieChart() // Se cambió el nombre para mayor claridad
         setupContractPieChart()
@@ -93,7 +92,6 @@ class EmpleadosRH : Fragment() {
         viewModelDepartamentos.load()
     }
 
-    // --- SECCIÓN DE OBSERVADORES ---
 
     private fun observeContractTypeViewModel() {
         contractTypeViewModel.contractData.observe(viewLifecycleOwner) { contractList ->
@@ -156,7 +154,6 @@ class EmpleadosRH : Fragment() {
         })
     }
 
-    // --- SECCIÓN DE CONFIGURACIÓN ESTÁTICA DE GRÁFICOS (SOLO APARIENCIA) ---
 
     private fun setupGenderPieChart() {
         pieChart.apply {
@@ -187,7 +184,6 @@ class EmpleadosRH : Fragment() {
         }
     }
 
-    // --- SECCIÓN DE ACTUALIZACIÓN DE GRÁFICOS CON DATOS ---
 
     private fun updateContractTypePieChart(contractList: List<TipoContrato>) {
         val entries = ArrayList<PieEntry>()
@@ -203,15 +199,13 @@ class EmpleadosRH : Fragment() {
         pieData.setValueTextSize(12f)
         pieData.setValueTextColor(Color.BLACK)
 
-        // Asigna los datos al gráfico
         pieChartContractType.data = pieData
         // Activa el modo porcentaje en el gráfico
         pieChartContractType.setUsePercentValues(true)
 
-        // =========== CORRECCIÓN FINALÍSIMA ===========
-        // Reemplaza la animación por un simple invalidate()
+
         pieChartContractType.invalidate()
-        // ============================================
+
     }
 
 
@@ -260,10 +254,8 @@ class EmpleadosRH : Fragment() {
         // Activa el modo porcentaje en el gráfico
         pieChart.setUsePercentValues(true)
 
-        // =========== CORRECCIÓN FINALÍSIMA ===========
-        // Reemplaza la animación por un simple invalidate()
 
-        // ============================================
+
     }
 
 
