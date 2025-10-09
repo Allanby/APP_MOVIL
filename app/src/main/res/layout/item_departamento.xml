@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal">
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardTotalEmpleados"
         android:layout_width="180dp"
@@ -16,14 +17,11 @@
         app:cardCornerRadius="16dp"
         app:cardElevation="8dp">
 
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="12dp"
-            >
+            android:padding="12dp">
 
             <TextView
                 android:id="@+id/departamentostxt"
@@ -31,40 +29,47 @@
                 android:layout_marginVertical="3dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
                 android:text="Departamento "
+                android:textColor="@color/white"
                 android:textAppearance="?attr/textAppearanceListItem"
-                android:textSize="15sp" />
-    <TextView
-        android:id="@+id/textViewdepartamento"
-        android:layout_marginHorizontal="12dp"
-        android:layout_marginVertical="3dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Departamento "
-        android:textAppearance="?attr/textAppearanceListItem"
-        android:textSize="12sp" />
+                android:fontFamily="@font/timesbold"
+            android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textViewdepartamento"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginVertical="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Departamento "
+                android:textColor="@color/white"
+                android:textAppearance="?attr/textAppearanceListItem"
+                android:fontFamily="@font/timesbold"
+            android:textSize="12sp" />
+
             <TextView
                 android:id="@+id/txtTotalEmpleados"
                 android:layout_marginHorizontal="12dp"
                 android:layout_marginVertical="3dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
+                android:textColor="@color/white"
                 android:text="Total empleados "
                 android:textAppearance="?attr/textAppearanceListItem"
-                android:textSize="15sp" />
+                android:fontFamily="@font/timesbold"
+            android:textSize="15sp" />
 
-    <TextView
-        android:layout_marginTop="4dp"
-        android:layout_marginHorizontal="12dp"
-        android:id="@+id/texviewTotalEmpleadosDepartamento"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Total de empleados"
-        android:textColor="@color/material_dynamic_secondary30"
-        android:textAppearance="?attr/textAppearanceListItem"
-        android:textSize="12sp" />
+            <TextView
+                android:layout_marginTop="4dp"
+                android:layout_marginHorizontal="12dp"
+                android:id="@+id/texviewTotalEmpleadosDepartamento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Total de empleados"
+                android:textColor="@color/white"
+                android:textAppearance="?attr/textAppearanceListItem"
+                android:fontFamily="@font/timesbold"
+            android:textSize="12sp" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
