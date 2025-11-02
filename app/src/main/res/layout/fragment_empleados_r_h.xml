@@ -9,20 +9,20 @@
     android:elevation="0dp"
     tools:context=".EmpleadosRH">
 
-    <!-- 2. Dentro del NestedScrollView, colocamos el LinearLayout original -->
-    <!--    Su altura ahora es wrap_content para que pueda crecer tanto como necesite -->
+
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_marginTop="75dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center_horizontal">
 
-        <!-- 🔹 Tarjeta para mostrar el total de empleados -->
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cardTotalEmpleados"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="8dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:padding="16dp"
@@ -72,9 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp" />
 
-        <!-- 🔹 RecyclerView para lista de departamentos -->
-        <!-- 3. Cambio CRÍTICO para el RecyclerView -->
-        <!--    layout_height debe ser "wrap_content" y le decimos que no haga scroll él mismo -->
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerDepartamentos"
             android:layout_width="match_parent"
@@ -84,7 +82,7 @@
             android:layout_marginTop="25dp"
             tools:listitem="@layout/item_employee" />
 
-        <!-- barchart de rango de edades -->
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
