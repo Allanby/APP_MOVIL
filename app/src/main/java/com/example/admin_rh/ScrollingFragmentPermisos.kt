@@ -116,7 +116,6 @@ class ScrollingFragmentPermisos : Fragment(R.layout.fragment_scrolling_permisos)
             try {
                 val response = retrofitPrueba.api.getDepartamentoPermisos()
                 withContext(Dispatchers.Main) {
-                    // Actualiza la card con los datos
                     textDepartamentoTotal.text = "${response.departamento} - ${response.total_permisos}"
                 }
             } catch (e: Exception) {
