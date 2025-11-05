@@ -1,5 +1,6 @@
 package com.example.admin_rh
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
@@ -11,9 +12,14 @@ import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.example.adminrh.CargoFragment
+import com.example.adminrh.DepartamentoFragment
+import com.example.adminrh.JornadaFragment
 import com.google.android.material.navigation.NavigationView
 import com.example.adminrh.R
 import com.example.adminrh.WelcomeFragment
+import com.example.gerencia.GerenciaScreen
+import com.example.gerencia.components.TarjetaInformativa
 
 class GerenciaActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -51,22 +57,34 @@ class GerenciaActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
 
         // Fragment por defecto
         if (savedInstanceState == null) {
-            val defaultFragment = WelcomeFragment.newInstance(
-                getString(R.string.welcome),
-                getString(R.string.welcome_message)
-            )
+            // 👇 CAMBIO AQUÍ: Crea el fragmento directamente.
+            val defaultFragment = WelcomeFragment()
+
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, defaultFragment)
+                // ✅ USA EL ID CORRECTO
+                .replace(R.id.content_frame_gerencia, defaultFragment)
                 .commit()
+
             supportActionBar?.title = getString(R.string.namme_gerencia)
         }
     }
 
+    @SuppressLint("CommitTransaction")
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+
+        val CargoFragment = CargoFragment()
+        val JornadaFragment = JornadaFragment()
+        val DepartamentoFragment = DepartamentoFragment()
+
+
         when (item.itemId) {
-            R.id.nav_cargo -> Toast.makeText(this, "Cargos de Gerencia", Toast.LENGTH_SHORT).show()
-            R.id.nav_jornada -> Toast.makeText(this, "Jornadas", Toast.LENGTH_SHORT).show()
-            R.id.nav_departamento -> Toast.makeText(this, "Departamentos", Toast.LENGTH_SHORT).show()
+            R.id.nav_cargo -> supportFragmentManager.beginTransaction()
+                .replace(R.id.content_frame_gerencia, CargoFragment).commit()
+            R.id.nav_jornada -> supportFragmentManager.beginTransaction()
+                .replace(R.id.content_frame_gerencia, JornadaFragment).commit()
+            R.id.nav_departamento -> supportFragmentManager.beginTransaction()
+                .replace(R.id.content_frame_gerencia, DepartamentoFragment).commit()
+
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true

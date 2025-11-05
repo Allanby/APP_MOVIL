@@ -5,6 +5,10 @@
     android:background="@color/blue_navy"
     tools:context="com.example.admin_rh.Fragment_item_nomina">
 
+    <androidx.compose.ui.platform.ComposeView
+        android:id="@+id/screen_nomina"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 
 </FrameLayout>

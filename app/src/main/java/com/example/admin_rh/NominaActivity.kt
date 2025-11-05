@@ -2,7 +2,6 @@ package com.example.admin_rh
 
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -30,6 +29,9 @@ class NominaActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
         // DrawerLayout
         drawerLayout = findViewById(R.id.drawer_layout_nomina)
+        // composeview
+
+
 
         // Toggle
         toggle = ActionBarDrawerToggle(
@@ -96,6 +98,7 @@ class NominaActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         return super.onOptionsItemSelected(item)
     }
 
+    @Deprecated("This method has been deprecated in favor of using the\n      {@link OnBackPressedDispatcher} via {@link #getOnBackPressedDispatcher()}.\n      The OnBackPressedDispatcher controls how back button events are dispatched\n      to one or more {@link OnBackPressedCallback} objects.")
     override fun onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)

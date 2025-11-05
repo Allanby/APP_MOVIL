@@ -27,7 +27,14 @@
         <FrameLayout
             android:id="@+id/content_frame_nomina"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+            <TextView android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Hola" />
+        </FrameLayout>
+
+
+
 
     </LinearLayout>
 
@@ -39,5 +46,6 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/nav_header_nomina"
         app:menu="@menu/activity_nomina_drawer" />
+
 
 </androidx.drawerlayout.widget.DrawerLayout>
