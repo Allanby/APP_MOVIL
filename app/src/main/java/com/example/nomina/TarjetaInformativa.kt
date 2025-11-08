@@ -24,7 +24,8 @@ fun TarjetaInformativa(
             Text(
                 text = titulo,
                 style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Bold
+                fontWeight = FontWeight.Bold,
+
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(

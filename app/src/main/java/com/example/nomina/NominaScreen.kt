@@ -37,8 +37,7 @@ fun NominaScreen(nominaViewModel: NominaViewModel = viewModel()) {
             item {
                 SelectorDeMes(
                     mesActual = "Octubre 2025",
-                    onMesSiguiente = { /* TODO: Lógica del ViewModel */ },
-                    onMesAnterior = { /* TODO: Lógica del ViewModel */ }
+
                 )
                 // Espacio entre el selector y las tarjetas
                 Spacer(modifier = Modifier.height(16.dp))
