@@ -14,7 +14,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
+import com.example.adminrh.R
+import androidx.compose.ui.Alignment
 import com.patrykandpatrick.vico.compose.cartesian.CartesianChartHost
 import com.patrykandpatrick.vico.compose.cartesian.axis.rememberBottom
 import com.patrykandpatrick.vico.compose.cartesian.axis.rememberStart
@@ -29,7 +33,7 @@ import com.patrykandpatrick.vico.core.cartesian.data.columnSeries
 @Composable
 fun GraficoDepartamental(modifier: Modifier = Modifier) {
     // 1. LOS DATOS: Se preparan los datos para el gráfico
-
+    val timesBold = FontFamily(Font(R.font.timesbold))
     // Contenedor del gráfico
     Card(
         modifier = modifier.fillMaxWidth().height(250.dp),
@@ -38,7 +42,9 @@ fun GraficoDepartamental(modifier: Modifier = Modifier) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
                 text = "Distribución Departamental",
-                style = MaterialTheme.typography.titleMedium
+                fontFamily = timesBold,
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.align(Alignment.CenterHorizontally)
             )
             Spacer(Modifier.height(12.dp))
 

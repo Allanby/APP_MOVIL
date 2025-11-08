@@ -64,7 +64,7 @@ fun NominaScreen(nominaViewModel: NominaViewModel = viewModel()) {
                         titulo = "Beneficios",
                         valor = "$5,000.00",
                         icono = Icons.Default.CardGiftcard,
-                        colorFondo = Color(0xFFAF7F12),
+                        colorFondo = Color(0xFF956D11),
                         colorIcono = Color.White,
                         modifier = Modifier.fillMaxWidth()
                     )
