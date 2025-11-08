@@ -61,7 +61,7 @@ class GerenciaActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
             val defaultFragment = WelcomeFragment()
 
             supportFragmentManager.beginTransaction()
-                // ✅ USA EL ID CORRECTO
+
                 .replace(R.id.content_frame_gerencia, defaultFragment)
                 .commit()
 

@@ -63,6 +63,10 @@ interface ApiClient {
     @GET("contratos/por-genero")
     suspend fun getContratosPorGenero(): List<ContratoGeneroResponse>
 
+    //APi de nomina COMPOSE
+    @GET("nomina/historial")
+    suspend fun getNominas(): List<NominaListResponce_Compo>
+
 }
 
 
