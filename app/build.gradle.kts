@@ -128,7 +128,7 @@ dependencies {
     // Animaciones y utilidades
     implementation("androidx.compose.animation:animation")
     implementation("androidx.compose.foundation:foundation")
-
+    implementation("androidx.compose.material:material-icons-extended:1.5.0")
     // Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
