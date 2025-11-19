@@ -2,10 +2,6 @@ package com.example.api.models.nomina
 
 import com.google.gson.annotations.SerializedName
 
-/**
- * Representa los datos generales de la nómina, incluyendo la proyección,
- * deducciones, beneficios y su distribución departamental.
- */
 data class DatosNomina(
     val mes: String,
     val anio: Int,
@@ -15,43 +11,28 @@ data class DatosNomina(
     val distribucion: List<DistribucionDepartamental>
 )
 
-/**
- * Representa la distribución de la nómina por departamento.
- */
-//data class DistribucionDepartamental(
-//    val departamento: String,
-//    val monto: Double
-//)
-
-/**
- * Representa los datos del salario bruto para un mes y año específicos.
- * Se utilizan anotaciones @SerializedName para mapear los nombres del JSON.
- */
 data class NominaMensual(
     @SerializedName("Anio")
     val anio: Int,
 
     @SerializedName("Mes")
-    val mes: String, // Puede venir como número o texto en el JSON ("1", "Enero", etc.)
+    val mes: String,
 
     @SerializedName("SalarioBruto")
     val salarioBruto: Double
 )
 
 data class TotalBeneficio(
-    // CAMBIO: Debe ser String para aceptar "RD$36075.0"
     @SerializedName("TotalBeneficio")
     val totalBeneficio: String
 )
 
 data class TotalDeduccion(
-    // CAMBIO: Debe ser String para aceptar "RD$62000.0"
     @SerializedName("TotalDeduccion")
     val totalDeduccion: String
 )
 
 data class Proyeccion(
-    // CAMBIO: Debe ser String para aceptar "RD$496200.0"
     @SerializedName("SalarioBruto")
     val salarioBruto: String
 )
@@ -76,7 +57,6 @@ data class DistribucionDepartamental(
     @SerializedName("DistribucionPorcentual")
     val distribucionPorcentual: Double,
 
-    // Usaremos este campo para mostrar directamente en la UI
     @SerializedName("DistribucionPorcentualTexto")
     val distribucionPorcentualTexto: String
 )

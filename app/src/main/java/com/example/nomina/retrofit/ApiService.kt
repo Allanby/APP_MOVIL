@@ -19,7 +19,6 @@ import retrofit2.http.Query
 
 interface ApiService {
 
-    // --- Endpoints de RRHH (ya existentes) ---
     @GET("empleados")
     suspend fun getAllEmployees(): Response<List<Employee>>
 
@@ -37,10 +36,7 @@ interface ApiService {
         @Query("mes") mes: Int
     ): Response<DatosNomina>
 
-    /**
-     * NUEVO ENDPOINT: Obtiene el historial de salarios brutos mensuales.
-     * Endpoint: /api/apicubo/nomina-mensual
-     */
+
     @GET("apicubo/nomina-mensual")
     suspend fun getNominaMensual(): Response<List<NominaMensual>>
 

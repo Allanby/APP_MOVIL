@@ -15,7 +15,6 @@ import com.example.api.models.nomina.SalarioBase
 import com.example.nomina.retrofit.RetrofitClient
 import kotlinx.coroutines.launch
 
-// El sealed class para estados de UI no se está usando, pero lo dejo por si lo necesitas a futuro.
 sealed class NominaEstado {
     object Cargando : NominaEstado()
     data class Error(val mensaje: String) : NominaEstado()
@@ -23,7 +22,6 @@ sealed class NominaEstado {
 
 class NominaViewModel : ViewModel() {
 
-    // --- LiveData para la UI (No se cambian) ---
     private val _proyeccion = MutableLiveData<Double?>()
     val proyeccion: LiveData<Double?> = _proyeccion
 
@@ -39,14 +37,12 @@ class NominaViewModel : ViewModel() {
     private val _distribucionDepartamental = MutableLiveData<List<DistribucionDepartamental>>()
     val distribucionDepartamental: LiveData<List<DistribucionDepartamental>> = _distribucionDepartamental
 
-    // --- State para Compose (No se cambia) ---
     private val _salarioBase = MutableLiveData<List<SalarioBase>>()
     var salarioB by mutableStateOf(emptyList<SalarioBase>())
         private set
     val salarioBase: LiveData<List<SalarioBase>> = _salarioBase
 
 
-    // El bloque 'init' se ejecuta al crear el ViewModel.
     init {
         cargarNominaMensual()
         cargarTotalBeneficio()
@@ -56,11 +52,7 @@ class NominaViewModel : ViewModel() {
         cargarDistribucionDepartamental()
     }
 
-    /**
-     * Elimina el prefijo "RD$" y cualquier espacio en blanco,
-     * luego convierte el String resultante a Double.
-     * Si la conversión falla, devuelve 0.0.
-     */
+
     private fun limpiarYConvertir(valorConMoneda: String): Double {
         return valorConMoneda
             .replace("RD$", "", ignoreCase = true) // Quita el prefijo
