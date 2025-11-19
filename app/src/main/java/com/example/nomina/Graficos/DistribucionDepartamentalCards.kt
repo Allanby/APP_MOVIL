@@ -24,18 +24,17 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.adminrh.nomina.NominaViewModel
 import com.example.api.models.nomina.DistribucionDepartamental
 
-// 1. Lista de colores creativos (tonos pastel y vibrantes suaves)
 private val cardColors = listOf(
-    Color(0xFFB2EBF2), // Cian claro
-    Color(0xFFFFF9C4), // Amarillo pálido
-    Color(0xFFD1C4E9), // Lavanda
-    Color(0xFFC8E6C9), // Verde menta
-    Color(0xFFF8BBD0), // Rosa claro
-    Color(0xFFFFE0B2), // Naranja pastel
-    Color(0xFFB3E5FC), // Azul cielo
-    Color(0xFFFFD180), // Naranja ambar
-    Color(0xFFCFD8DC), // Gris azulado
-    Color(0xFFBCAAA4)  // Marrón claro
+    Color(0xFFB2EBF2),
+    Color(0xFFFFF9C4),
+    Color(0xFFD1C4E9),
+    Color(0xFFC8E6C9),
+    Color(0xFFF8BBD0),
+    Color(0xFFFFE0B2),
+    Color(0xFFB3E5FC),
+    Color(0xFFFFD180),
+    Color(0xFFCFD8DC),
+    Color(0xFFBCAAA4)
 )
 
 @Composable
@@ -70,14 +69,12 @@ fun DistribucionDepartamentalCards(
                     Text("No se pudo cargar la distribución.")
                 }
                 else -> {
-                    // Estado de Éxito: Mostramos las tarjetas
                     LazyRow(
                         modifier = Modifier.fillMaxWidth(),
                         contentPadding = PaddingValues(horizontal = 16.dp),
                         horizontalArrangement = Arrangement.spacedBy(12.dp) // Espacio entre tarjetas
                     ) {
                         itemsIndexed(distribucionList!!) { index, item ->
-                            // 3. Asignamos un color usando el índice
                             val colorIndex = index % cardColors.size
                             DepartamentoCard(
                                 item = item,
@@ -93,17 +90,14 @@ fun DistribucionDepartamentalCards(
 }
 
 @Composable
-// 4. DepartamentoCard ahora acepta un parámetro de color
 fun DepartamentoCard(item: DistribucionDepartamental, cardColor: Color) {
-    // Definimos un color de texto que contraste (simple blanco o negro funciona bien con pasteles)
     val textColor = if (cardColor.luminance() > 0.5) Color.Black else Color.White
 
     Card(
         modifier = Modifier
-            .width(150.dp) // Ancho de cada tarjeta
-            .fillMaxHeight(), // Ocupa toda la altura del LazyRow
+            .width(150.dp)
+            .fillMaxHeight(),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
-        // 5. Usamos el color recibido para el fondo de la tarjeta
         colors = CardDefaults.cardColors(containerColor = cardColor)
     ) {
         Column(
@@ -120,14 +114,14 @@ fun DepartamentoCard(item: DistribucionDepartamental, cardColor: Color) {
                 textAlign = TextAlign.Center,
                 maxLines = 2,
                 minLines = 2,
-                color = textColor // Asignamos el color de texto
+                color = textColor
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = item.distribucionPorcentualTexto,
                 style = MaterialTheme.typography.headlineMedium,
                 fontWeight = FontWeight.ExtraBold,
-                color = textColor // Asignamos el color de texto
+                color = textColor
             )
         }
     }

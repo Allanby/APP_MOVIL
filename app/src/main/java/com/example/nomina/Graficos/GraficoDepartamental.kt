@@ -32,7 +32,7 @@ import com.patrykandpatrick.vico.core.cartesian.data.columnSeries
 
 @Composable
 fun GraficoDepartamental(modifier: Modifier = Modifier) {
-    // 1. LOS DATOS: Se preparan los datos para el gráfico
+    // datos para el gráfico
     val timesBold = FontFamily(Font(R.font.timesbold))
     // Contenedor del gráfico
     Card(
@@ -48,7 +48,7 @@ fun GraficoDepartamental(modifier: Modifier = Modifier) {
             )
             Spacer(Modifier.height(12.dp))
 
-            // 3. EL GRÁFICO: Este es el Composable nativo de Vico.
+            // composable nativo de Vico.
             val modelProducer = remember { CartesianChartModelProducer() }
             LaunchedEffect(Unit) {
                 modelProducer.runTransaction {

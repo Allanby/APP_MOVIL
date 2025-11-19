@@ -1,55 +1,99 @@
 package com.example.adminrh.nomina.components
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.example.adminrh.R
 
 @Composable
 fun SelectorDeMes(
-    textoDelMes: String,
+    mesActual: String,
     modifier: Modifier = Modifier
 ) {
-    // Usamos Surface para darle una apariencia de tarjeta y fondo
+    // fuente
+    val timesBold = FontFamily(Font(R.font.timesbold))
+
+    var activo by remember { mutableStateOf(false) }
+    val fondoAnimado by animateColorAsState(
+        targetValue = if (activo) Color(0xFF004AAD) else Color(0xFF0059D6),
+        animationSpec = tween(durationMillis = 700),
+        label = "animColor"
+    )
+
+    // contenedor principal
     Surface(
-        modifier = modifier.fillMaxWidth(),
-        shape = MaterialTheme.shapes.medium, // Bordes redondeados
-        tonalElevation = 1.dp, // Una ligera sombra/elevación
-        // 👇 CAMBIO AQUÍ: Añadimos el color pastel
-        color = MaterialTheme.colorScheme.primaryContainer
+        modifier = modifier
+            .fillMaxWidth()
+            .height(70.dp)
+            .shadow(10.dp, shape = RoundedCornerShape(16.dp))
+            .background(fondoAnimado, shape = RoundedCornerShape(16.dp))
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+        color = Color.Transparent,
+        shape = RoundedCornerShape(16.dp),
+        onClick = { activo = !activo }
     ) {
         Row(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 12.dp), // Padding interno vertical
+                .fillMaxSize()
+                .background(fondoAnimado, shape = RoundedCornerShape(16.dp)),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center // Centramos el texto
+            horizontalArrangement = Arrangement.Center
         ) {
+
+            Image(
+                painter = painterResource(id = R.drawable.calendar_month),
+                contentDescription = "icono de calendario",
+                modifier = Modifier
+                    .size(35.dp)
+                    .padding(end = 8.dp),
+                contentScale = ContentScale.Fit
+            )
+
+
             Text(
-                text = textoDelMes,
-                style = MaterialTheme.typography.titleMedium, // Un estilo adecuado
-                fontWeight = FontWeight.Bold,
-                // 👇 CAMBIO AQUÍ: Color del texto que contrasta con el fondo pastel
-                color = MaterialTheme.colorScheme.onPrimaryContainer
+                text = mesActual,
+                style = TextStyle(
+                    fontFamily = timesBold,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 22.sp,
+                    color = Color.White,
+                    textAlign = TextAlign.Center,
+                    letterSpacing = 1.sp
+                )
             )
         }
     }
 }
 
-
 @Preview(showBackground = true)
 @Composable
 fun SelectorDeMesPreview() {
-    SelectorDeMes(
-        textoDelMes = "Mes en curso: Noviembre"
-    )
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color(0xFFF3F4F6)),
+        contentAlignment = Alignment.Center
+    ) {
+        SelectorDeMes(mesActual = "Noviembre 2025")
+    }
 }
