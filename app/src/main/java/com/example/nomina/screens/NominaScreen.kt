@@ -77,7 +77,6 @@ fun NominaScreen(nominaViewModel: NominaViewModel = viewModel()) {
                         icono = Icons.Default.TrendingUp
                     )
 
-                    // --- 👇 CAMBIOS PARA DEDUCCIONES AQUÍ 👇 ---
                     // Tarjeta de Deducciones (azul pastel)
                     TarjetaInformativa(
                         titulo = "Deducciones",
@@ -93,7 +92,6 @@ fun NominaScreen(nominaViewModel: NominaViewModel = viewModel()) {
                 }
             }
 
-            // --- 👇 CAMBIOS PARA BENEFICIOS AQUÍ 👇 ---
             // 3. Tarjeta Inferior (Beneficios)
             item {
                 TarjetaInformativa(

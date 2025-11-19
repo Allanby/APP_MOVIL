@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
     <domain-config cleartextTrafficPermitted="true">
-        <!-- Emulador Android accediendo a localhost -->
+        <!-- IPs que ya tenías permitidas -->
         <domain includeSubdomains="true">10.0.2.2</domain>
-
         <domain includeSubdomains="true">172.184.195.242</domain>
-
-        <!-- Acceso directo a tu máquina desde la red local -->
         <domain includeSubdomains="true">192.168.176.131</domain>
+
+        <domain includeSubdomains="true">20.150.223.108</domain>
     </domain-config>
 
-    <!-- Por defecto, HTTPS para todo lo demás -->
+    <!--
+      Esta es una buena práctica. Le dice a la app que para cualquier
+      otro dominio no listado arriba, solo se permite HTTPS.
+    -->
     <base-config cleartextTrafficPermitted="false">
         <trust-anchors>
             <certificates src="system" />
         </trust-anchors>
     </base-config>
 </network-security-config>
-
-

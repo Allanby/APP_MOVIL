@@ -1,97 +1,53 @@
 package com.example.admin_rh
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.view.GravityCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.drawerlayout.widget.DrawerLayout
-import com.example.adminrh.CargoFragment
-import com.example.adminrh.DepartamentoFragment
-import com.example.adminrh.JornadaFragment
-import com.google.android.material.navigation.NavigationView
 import com.example.adminrh.R
 import com.example.adminrh.WelcomeFragment
-import com.example.gerencia.ui.GerenciaScreen
-import com.example.gerencia.components.TarjetaInformativa
 
-class GerenciaActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-
-    private lateinit var drawerLayout: DrawerLayout
-    private lateinit var toggle: ActionBarDrawerToggle
+/**
+ * GerenciaActivity ahora actúa como un simple contenedor para el dashboard.
+ * Se ha eliminado toda la lógica del NavigationDrawer.
+ */
+class GerenciaActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.fragment_gerencia)  // layout de gerencia
+        setContentView(R.layout.fragment_gerencia) // Asegúrate que este layout también esté simplificado
 
-        drawerLayout = findViewById(R.id.drawer_layout_gerencia)
-        val toolbar: Toolbar = findViewById(R.id.toolbar_main) // app_bar_main.xml
+        // 1. Configurar el Toolbar
+        val toolbar: Toolbar = findViewById(R.id.toolbar_main)
         setSupportActionBar(toolbar)
 
-        // Configuración del Drawer
-        toggle = ActionBarDrawerToggle(
-            this, drawerLayout, toolbar,
-            R.string.navigation_drawer_open,
-            R.string.navigation_drawer_close
-        )
-        drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
+        // 2. Activar y mostrar el botón de "Atrás" (la flecha) en el Toolbar
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.title = getString(R.string.namme_gerencia) // Establece el título "Gerencia"
 
-        ViewCompat.setOnApplyWindowInsetsListener(drawerLayout) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-
-        // Configuración del NavigationView
-        val navigationView: NavigationView = findViewById(R.id.nav_view_gerencia)
-        navigationView.setNavigationItemSelectedListener(this)
-        navigationView.itemIconTintList = null
-
-        // Fragment por defecto
+        // 3. Cargar el fragmento del dashboard (WelcomeFragment) solo si es la primera vez que se crea la actividad.
         if (savedInstanceState == null) {
-            // 👇 CAMBIO AQUÍ: Crea el fragmento directamente.
-            val defaultFragment = WelcomeFragment()
-
             supportFragmentManager.beginTransaction()
-
-                .replace(R.id.content_frame_gerencia, defaultFragment)
+                .replace(R.id.content_frame_gerencia, WelcomeFragment())
                 .commit()
-
-            supportActionBar?.title = getString(R.string.namme_gerencia)
         }
     }
 
-    @SuppressLint("CommitTransaction")
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-
-        val CargoFragment = CargoFragment()
-        val JornadaFragment = JornadaFragment()
-        val DepartamentoFragment = DepartamentoFragment()
-
-
-        when (item.itemId) {
-            R.id.nav_cargo -> supportFragmentManager.beginTransaction()
-                .replace(R.id.content_frame_gerencia, CargoFragment).commit()
-            R.id.nav_jornada -> supportFragmentManager.beginTransaction()
-                .replace(R.id.content_frame_gerencia, JornadaFragment).commit()
-            R.id.nav_departamento -> supportFragmentManager.beginTransaction()
-                .replace(R.id.content_frame_gerencia, DepartamentoFragment).commit()
-
-        }
-        drawerLayout.closeDrawer(GravityCompat.START)
-        return true
-    }
-
+    /**
+     * Este método ahora solo se encarga de manejar el clic en el botón de "Atrás".
+     */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (toggle.onOptionsItemSelected(item)) return true
+        // Comprueba si el botón presionado es el botón "home" (la flecha de atrás en el Toolbar).
+        if (item.itemId == android.R.id.home) {
+            finish() // Cierra la GerenciaActivity y regresa a la pantalla anterior (RolesSeleccionActivity).
+            return true
+        }
         return super.onOptionsItemSelected(item)
     }
+
+    // --- ¡Toda la lógica anterior del DrawerLayout ha sido eliminada! ---
+    // - No se implementa NavigationView.OnNavigationItemSelectedListener.
+    // - Se eliminó la variable 'toggle' (ActionBarDrawerToggle).
+    // - Se eliminó el método onNavigationItemSelected.
 }

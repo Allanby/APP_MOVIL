@@ -10,7 +10,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.patrykandpatrick.vico.compose.cartesian.CartesianChartHost
-//  --- IMPORTACIONES ADICIONALES NECESARIAS ---
 import com.patrykandpatrick.vico.core.cartesian.axis.HorizontalAxis
 import com.patrykandpatrick.vico.core.cartesian.axis.VerticalAxis
 import com.patrykandpatrick.vico.compose.cartesian.axis.rememberBottom
@@ -19,7 +18,6 @@ import com.patrykandpatrick.vico.compose.cartesian.layer.rememberLineCartesianLa
 import com.patrykandpatrick.vico.compose.cartesian.rememberCartesianChart
 import com.patrykandpatrick.vico.core.cartesian.data.CartesianChartModelProducer
 
-// ... (La función ReportesNominaScreen se queda igual) ...
 @Composable
 fun ReportesNominaScreen(
     modifier: Modifier = Modifier,
@@ -72,7 +70,6 @@ fun GraficoNominaMensual(
             CartesianChartHost(
                 chart = rememberCartesianChart(
                     rememberLineCartesianLayer(),
-                    // 👇 --- LLAMADAS CORREGIDAS --- 👇
                     startAxis = VerticalAxis.rememberStart(),
                     bottomAxis = HorizontalAxis.rememberBottom(),
                 ),
@@ -83,7 +80,6 @@ fun GraficoNominaMensual(
     }
 }
 
-// ... (La función de Preview se queda igual) ...
 @Preview(showBackground = true)
 @Composable
 fun ReportesNominaScreenPreview() {

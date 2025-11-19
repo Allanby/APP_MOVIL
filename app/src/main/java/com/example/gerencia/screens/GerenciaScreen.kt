@@ -35,14 +35,12 @@ fun GerenciaScreen(
     )
 }
 
-// --- Función de UI (MODIFICADA) ---
 @Composable
 fun GerenciaContent(
     departamentosState: DepartamentosUiState,
     jornadasState: JornadasUiState,
     cargosState: CargosUiState
 ) {
-    // 1. Se reemplaza LazyVerticalGrid por Column
     Column(
         modifier = Modifier
             .fillMaxSize() // La columna ocupa todo el espacio
@@ -109,7 +107,6 @@ fun GerenciaContent(
     }
 }
 
-// 3. (OPCIONAL PERO RECOMENDADO) Función de ayuda para evitar repetir código
 @Composable
 private fun TarjetaContainer(
     modifier: Modifier = Modifier,
@@ -123,7 +120,6 @@ private fun TarjetaContainer(
 }
 
 
-// --- PREVIEW (sin cambios) ---
 @Preview(showBackground = true, name = "Dashboard Completo")
 @Composable
 fun GerenciaPreview_Success() {

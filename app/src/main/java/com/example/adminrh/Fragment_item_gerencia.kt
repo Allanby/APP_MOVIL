@@ -13,7 +13,6 @@ import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.res.painterResource
 import androidx.fragment.app.Fragment
 import com.example.gerencia.ui.GerenciaScreen
-// 👇 ¡AHORA SÍ FUNCIONARÁ! Importa la función del tema que acabas de crear.
 import com.example.adminrh.ui.theme.AdminrhTheme
 import com.example.gerencia.components.TarjetaInformativa
 
@@ -29,7 +28,7 @@ class WelcomeFragment : Fragment() {
 
             // Establece el contenido de Compose
             setContent {
-                // ✅ Envuelve tu pantalla en el tema de Compose
+                //  Envuelve tu pantalla en el tema de Compose
                 AdminrhTheme {
                     GerenciaScreen()
 //                    Column(
@@ -92,7 +91,6 @@ class JornadaFragment(): Fragment(){
 
             // Establece el contenido de Compose
             setContent {
-                // ✅ Envuelve tu pantalla en el tema de Compose
                 AdminrhTheme {
                     //GerenciaScreen()
                     TarjetaInformativa(titulo = "Jornadas", cantidad = 3, icon = R.drawable.ic_calendar_clock_24)
@@ -113,7 +111,7 @@ class DepartamentoFragment(): Fragment(){
 
             // Establece el contenido de Compose
             setContent {
-                // ✅ Envuelve tu pantalla en el tema de Compose
+                //Envuelve tu pantalla en el tema de Compose
                 AdminrhTheme {
                     GerenciaScreen()
                     //TarjetaInformativa(titulo = "Departamentos", cantidad = 12, icon = R.drawable.ic_apartment_24)

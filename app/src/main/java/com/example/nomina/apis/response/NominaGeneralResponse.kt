@@ -39,18 +39,21 @@ data class NominaMensual(
 )
 
 data class TotalBeneficio(
+    // CAMBIO: Debe ser String para aceptar "RD$36075.0"
     @SerializedName("TotalBeneficio")
-    val totalBeneficio: Double
+    val totalBeneficio: String
 )
 
 data class TotalDeduccion(
+    // CAMBIO: Debe ser String para aceptar "RD$62000.0"
     @SerializedName("TotalDeduccion")
-    val totalDeduccion: Double
+    val totalDeduccion: String
 )
 
 data class Proyeccion(
+    // CAMBIO: Debe ser String para aceptar "RD$496200.0"
     @SerializedName("SalarioBruto")
-    val salarioBruto: Double
+    val salarioBruto: String
 )
 
 data class SalarioBase(
