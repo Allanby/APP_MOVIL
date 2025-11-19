@@ -22,25 +22,24 @@ import com.example.gerencia.viewModel.GerenciaViewModel
 fun GerenciaScreen(
     gerenciaViewModel: GerenciaViewModel = viewModel() // Inyecta el ViewModel
 ) {
-    // Observa el estado de los departamentos
+
     val departamentosState by gerenciaViewModel.departamentosUiState.collectAsState()
 
-    // Usamos LazyVerticalGrid para que la pantalla sea adaptable y tenga scroll si hay muchos elementos.
     LazyVerticalGrid(
-        columns = GridCells.Adaptive(minSize = 180.dp), // Ajuste para mejor visualización
+        columns = GridCells.Adaptive(minSize = 180.dp),
         modifier = Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(8.dp), // Un padding más consistente
+        contentPadding = PaddingValues(8.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         // Tarjeta de Departamentos
         item {
             if (departamentosState.isLoading) {
-                // Muestra un indicador de carga mientras los datos llegan
+                // indicador de carga
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(250.dp) // Misma altura que la tarjeta
+                        .height(250.dp)
                         .padding(12.dp),
                     contentAlignment = Alignment.Center
                 ) {
@@ -58,30 +57,27 @@ fun GerenciaScreen(
                     Text(text = departamentosState.error!!, color = Color.Red)
                 }
             } else {
-                // Muestra la tarjeta cuando los datos están listos
+
                 TarjetaInformativa(
                     titulo = "Departamentos",
                     cantidad = departamentosState.cantidad,
-                    icon = R.drawable.ic_launcher_foreground // Reemplaza con un ícono adecuado
+                    icon = R.drawable.ic_launcher_foreground
                 )
             }
         }
         item {
-            // TarjetaInformativa(titulo = "Cargos", cantidad = 25, icon = R.drawable.ic_launcher_foreground)
         }
         item {
-            //   TarjetaInformativa(titulo = "Jornadas", cantidad = 3, icon = R.drawable.ic_launcher_foreground)
+
         }
 
-        // Puedes agregar más tarjetas aquí si lo necesitas
     }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun GerenciaScreenPreview() {
-    // El preview no puede usar el ViewModel real, así que lo dejamos simple por ahora.
-    // O podrías crear un ViewModel falso para el preview.
+
     GerenciaScreen()
 }
 

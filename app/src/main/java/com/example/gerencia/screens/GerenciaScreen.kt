@@ -19,7 +19,7 @@ import com.example.gerencia.viewModel.DepartamentosUiState
 import com.example.gerencia.viewModel.GerenciaViewModel
 import com.example.gerencia.viewModel.JornadasUiState
 
-// --- Función principal que se conecta a la navegación (sin cambios) ---
+
 @Composable
 fun GerenciaScreen(
     gerenciaViewModel: GerenciaViewModel = viewModel()
@@ -41,14 +41,14 @@ fun GerenciaContent(
     jornadasState: JornadasUiState,
     cargosState: CargosUiState
 ) {
+
     Column(
         modifier = Modifier
-            .fillMaxSize() // La columna ocupa todo el espacio
-            .padding(16.dp), // Un padding general para que no esté pegado a los bordes
+            .fillMaxSize()
+            .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp) // Espacio vertical entre las tarjetas
     ) {
         // ---------- DEPARTAMENTOS ----------
-        // 2. Se añade weight(1f) para que cada tarjeta ocupe el mismo espacio vertical
         TarjetaContainer(modifier = Modifier.weight(1f)) {
             when {
                 departamentosState.isLoading -> {
@@ -61,7 +61,7 @@ fun GerenciaContent(
                     TarjetaInformativa(
                         titulo = "Departamentos",
                         cantidad = departamentosState.cantidad,
-                        icon = R.drawable.ic_launcher_foreground // Reemplaza con tu ícono
+                        icon = R.drawable.ic_apartment_24
                     )
                 }
             }
@@ -113,11 +113,12 @@ private fun TarjetaContainer(
     content: @Composable BoxScope.() -> Unit
 ) {
     Box(
-        modifier = modifier.fillMaxWidth(), // El contenedor ocupa todo el ancho
+        modifier = modifier.fillMaxWidth(),
         contentAlignment = Alignment.Center,
         content = content
     )
 }
+
 
 
 @Preview(showBackground = true, name = "Dashboard Completo")
