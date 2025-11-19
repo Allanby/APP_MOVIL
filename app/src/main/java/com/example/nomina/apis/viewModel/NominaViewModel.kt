@@ -55,9 +55,9 @@ class NominaViewModel : ViewModel() {
 
     private fun limpiarYConvertir(valorConMoneda: String): Double {
         return valorConMoneda
-            .replace("RD$", "", ignoreCase = true) // Quita el prefijo
-            .trim() // Quita espacios
-            .toDoubleOrNull() ?: 0.0 // Convierte a Double o devuelve 0.0 si falla
+            .replace("$", "", ignoreCase = true) // Quita el prefijo
+            .trim()
+            .toDoubleOrNull() ?: 0.0
     }
 
     // --- Métodos de carga de datos ---
