@@ -18,7 +18,7 @@ import com.example.adminrh.JornadaFragment
 import com.google.android.material.navigation.NavigationView
 import com.example.adminrh.R
 import com.example.adminrh.WelcomeFragment
-import com.example.gerencia.GerenciaScreen
+import com.example.gerencia.ui.GerenciaScreen
 import com.example.gerencia.components.TarjetaInformativa
 
 class GerenciaActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {

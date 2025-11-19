@@ -28,57 +28,60 @@ import com.example.adminrh.R
 fun TarjetaInformativa(
     titulo: String,
     cantidad: Int,
-    icon: Int ,
+    icon: Int,
     modifier: Modifier = Modifier
 ) {
-    Column(
-        modifier = Modifier.fillMaxWidth().height(400.dp),
-       // verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+    Card(
+        modifier = modifier
+            .fillMaxWidth()
+            .height(250.dp)
+            .padding(12.dp),
+        elevation = CardDefaults.cardElevation(defaultElevation = 16.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.White)
     ) {
-        Card(
-            modifier = modifier
-                .fillMaxWidth()
-                .height(250.dp)
-                .padding(12.dp),
-            elevation = CardDefaults.cardElevation(defaultElevation = 16.dp),
-            colors = CardDefaults.cardColors(containerColor = Color.White)
+        Row(
+            modifier = Modifier
+                .padding(16.dp)
+                .fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Row(
-                modifier = Modifier.padding(16.dp).fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                Text(
-                    text = titulo,
-                    style = MaterialTheme.typography.titleLarge,
-                    fontWeight = FontWeight.SemiBold
-                )
-                Spacer(modifier = Modifier.height(8.dp))
-                Text(
-                    text = cantidad.toString(),
-                    style = MaterialTheme.typography.displayMedium,
-                    fontWeight = FontWeight.Bold
-                )
-            }
-            Row(
-                modifier = Modifier.padding(16.dp).fillMaxWidth(),
-                horizontalArrangement = Arrangement.Start
-            ){
-                Icon(
-                    painter = painterResource(id = icon),
-                    contentDescription = null,
-                    modifier = Modifier.size(86.dp)
+            Text(
+                text = titulo,
+                style = MaterialTheme.typography.titleLarge,
+                fontWeight = FontWeight.SemiBold
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = cantidad.toString(),
+                style = MaterialTheme.typography.displayMedium,
+                fontWeight = FontWeight.Bold
+            )
+        }
+        Row(
+            modifier = Modifier
+                .padding(16.dp)
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.Start
+        ) {
+            Icon(
+                painter = painterResource(id = icon),
+                contentDescription = null,
+                modifier = Modifier.size(86.dp)
 
-                )
-            }
+            )
         }
     }
+
 }
 
 // Preview para ver cómo se ve la tarjeta de forma aislada
 @Preview(showBackground = true)
 @Composable
 fun TarjetaInformativaPreview() {
-    TarjetaInformativa(titulo = "Departamentos", cantidad = 12, icon = R.drawable.ic_launcher_foreground)
+    TarjetaInformativa(
+        titulo = "Departamentos",
+        cantidad = 12,
+        icon = R.drawable.ic_launcher_foreground
+    )
 }

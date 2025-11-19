@@ -19,9 +19,6 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     packaging {
-        resources.excludes.add("META-INF/INDEX.LIST")
-    }
-    packaging {
         resources {
             excludes.add("META-INF/INDEX.LIST")
             excludes.add("META-INF/DEPENDENCIES")
@@ -56,37 +53,62 @@ android {
     }
 
     buildFeatures {
-        // 👇 Activamos Compose y dejamos ViewBinding si aún lo usás
         compose = true
         viewBinding = true
     }
 
     composeOptions {
-        // 👇 Versión estable actual del compilador Compose
         kotlinCompilerExtensionVersion = "2.2.21"
     }
 }
 
 
 dependencies {
-    //VICO
+    implementation(libs.chart)    // ===================================
+    // LIBRERÍAS DE GRÁFICOS (CORREGIDO)
+    // ===================================
+    // VICO (para Jetpack Compose)
     implementation(libs.vico.compose)
-    implementation(libs.vico.compose.m2)
-    implementation(libs.vico.compose.m3)
-    implementation(libs.vico.multiplatform)
-    implementation(libs.vico.views)    // Core Android
+    implementation(libs.vico.compose.m3) // ¡LA CORRECTA PARA MATERIAL 3!
+    // implementation(libs.vico.compose.m2) // ¡LA LÍNEA PROBLEMÁTICA HA SIDO ELIMINADA!
+    implementation("com.patrykandpatrick.vico:compose:2.3.4") // O la versión más reciente
+    implementation("com.patrykandpatrick.vico:core:2.3.4")
+
+    // OTRAS LIBRERÍAS DE GRÁFICOS (si las sigues usando)
+    implementation("com.github.AnyChart:AnyChart-Android:1.1.5")
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+
+    // ==============================
+    // 🧩 Jetpack Compose
+    // ==============================
+    implementation(platform("androidx.compose:compose-bom:2025.01.00"))
+    implementation("androidx.compose.ui:ui")
+    implementation("androidx.compose.material3:material3")
+    implementation("androidx.compose.ui:ui-tooling-preview")
+    debugImplementation("androidx.compose.ui:ui-tooling")
+    implementation("androidx.activity:activity-compose:1.9.3")
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.5")
+    implementation("androidx.navigation:navigation-compose:2.8.2")
+    implementation("androidx.compose.animation:animation")
+    implementation("androidx.compose.foundation:foundation")
+    implementation("androidx.compose.material:material-icons-extended:1.5.0")
+    implementation(libs.androidx.runtime.livedata)
+
+    // ==============================
+    // 🤖 Core Android & Utils
+    // ==============================
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation("androidx.activity:activity-ktx:1.9.3")
     implementation(libs.androidx.constraintlayout)
 
-    // Layout y navegación (para pantallas XML antiguas)
+    // Layout y navegación (para XML)
     implementation("androidx.drawerlayout:drawerlayout:1.2.0")
     implementation("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
     implementation("androidx.fragment:fragment-ktx:1.8.4")
 
-    // Lifecycle + coroutines
+    // Lifecycle + Coroutines
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.4")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.4")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
@@ -94,43 +116,19 @@ dependencies {
     // Networking (Retrofit + OkHttp)
     implementation("com.squareup.retrofit2:retrofit:3.0.0")
     implementation("com.squareup.retrofit2:converter-gson:3.0.0")
-    implementation("com.google.code.gson:gson:2.10.1") // <-- ÚNICA DEPENDENCIA AÑADIDA
+    implementation("com.google.code.gson:gson:2.10.1")
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
-    implementation(libs.firebase.appdistribution.gradle)
     debugImplementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
 
     // Imágenes
     implementation("io.coil-kt:coil:2.6.0")
 
-    // Gráficos
-    implementation("com.github.AnyChart:AnyChart-Android:1.1.5")
-    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+    // Firebase (si lo usas)
+    // implementation(libs.firebase.appdistribution.gradle) // Descomentar si realmente lo usas
 
-    // ==============================
-    // 🧩 Jetpack Compose
-    // ==============================
-    // BOM (maneja versiones automáticamente)
-    implementation(platform("androidx.compose:compose-bom:2025.01.00"))
-
-    // Componentes principales
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.material3:material3")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    debugImplementation("androidx.compose.ui:ui-tooling")
-
-    // Actividades y ciclo de vida
-    implementation("androidx.activity:activity-compose:1.9.3")
-    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.5")
-
-    // Navegación entre pantallas Compose
-    implementation("androidx.navigation:navigation-compose:2.8.2")
-
-    // Animaciones y utilidades
-    implementation("androidx.compose.animation:animation")
-    implementation("androidx.compose.foundation:foundation")
-    implementation("androidx.compose.material:material-icons-extended:1.5.0")
     // Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
+

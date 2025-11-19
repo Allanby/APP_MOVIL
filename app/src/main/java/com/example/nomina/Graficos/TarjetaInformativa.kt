@@ -31,7 +31,8 @@ fun TarjetaInformativa(
     modifier: Modifier = Modifier,
     icono: ImageVector = Icons.Default.AttachMoney,
     colorFondo: Color = Color(0xDD5D025F),
-    colorIcono: Color = Color.White
+    colorIcono: Color = Color.White,
+    colorTexto: Color = Color.White
 ) {
     val timesBold = FontFamily(Font(R.font.timesbold))
 
@@ -61,7 +62,11 @@ fun TarjetaInformativa(
                     fontFamily = timesBold,
                     fontWeight = FontWeight.Bold,
                     fontSize = 22.sp,
-                    color = Color.White
+                    // 👇 USA EL NUEVO PARÁMETRO AQUÍ 👇
+                    color = colorTexto
+
+
+
                 )
             )
 
@@ -85,7 +90,7 @@ fun TarjetaInformativa(
                         fontFamily = timesBold,
                         fontWeight = FontWeight.Bold,
                         fontSize = 22.sp,
-                        color = Color.White
+                        color = colorTexto
                     )
                 )
             }
@@ -106,8 +111,6 @@ fun TarjetaInformativaPreview() {
         TarjetaInformativa(
             titulo = "Proyección",
             valor = "4,502,895.98",
-            colorFondo = Color(0xDD5D025F),
-            colorIcono = Color.White
         )
     }
 }

@@ -1,5 +1,6 @@
 [versions]
 agp = "8.13.0"
+chart = "1.1.0"
 composeM3 = "1.14.0"
 kotlin = "2.2.21"
 coreKtx = "1.17.0"
@@ -12,8 +13,13 @@ activity = "1.11.0"
 constraintlayout = "2.2.1"
 firebaseAppdistributionGradle = "5.1.1"
 vico = "2.2.1"
+runtimeLivedata = "1.9.4"
+charty = "2.1.0-beta03.4"
 
 [libraries]
+
+chart = { module = "io.github.thechance101:chart", version.ref = "chart" }
+charty = { module = "com.himanshoe:charty", version.ref = "charty" }
 # compiler
 # For Jetpack Compose.
 vico-compose = { group = "com.patrykandpatrick.vico", name = "compose", version.ref = "vico" }
@@ -46,6 +52,7 @@ androidx-activity = { group = "androidx.activity", name = "activity", version.re
 androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activity" } # 👈 agregado
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 firebase-appdistribution-gradle = { group = "com.google.firebase", name = "firebase-appdistribution-gradle", version.ref = "firebaseAppdistributionGradle" }
+androidx-runtime-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata", version.ref = "runtimeLivedata" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
