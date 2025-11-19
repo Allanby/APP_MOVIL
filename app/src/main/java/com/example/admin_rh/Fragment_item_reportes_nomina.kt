@@ -16,24 +16,20 @@ class Fragment_item_reportes_nomina : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         return ComposeView(requireContext()).apply {
-            // Estrategia para destruir la composición cuando la vista del Fragment se destruye
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
 
             // Establece el contenido de Compose
             setContent {
-                // Aquí usamos el Composable que acabamos de crear
                 ReportesNominaScreen()
             }
         }
     }
 
-    // El resto del código (companion object, etc.) puede permanecer como está.
     companion object {
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             Fragment_item_reportes_nomina().apply {
                 arguments = Bundle().apply {
-                    // Si necesitas pasar argumentos, hazlo aquí
                 }
             }
     }

@@ -1,4 +1,4 @@
-package com.example.admin_rh   // 👈 corregido con guion bajo
+package com.example.admin_rh
 
 import android.content.Intent
 import android.os.Bundle

@@ -32,16 +32,14 @@ class RhMenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                // Comprueba si el menú lateral está abierto
+
                 if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-                    // Si está abierto, ciérralo
+
                     drawerLayout.closeDrawer(GravityCompat.START)
                 } else {
-                    // Si el menú no está abierto, ejecuta el comportamiento por defecto (salir de la app o ir a la actividad anterior)
-                    // Para hacer esto, deshabilitamos temporalmente el callback y volvemos a llamar al evento de retroceso
                     isEnabled = false
                     onBackPressedDispatcher.onBackPressed()
-                    isEnabled = true // Lo reactivamos por si el usuario vuelve a esta actividad
+                    isEnabled = true
                 }
             }
         })
@@ -77,11 +75,7 @@ class RhMenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         // NavigationView
         navigationView = findViewById(R.id.nav_view_rh)
         navigationView.setNavigationItemSelectedListener(this)
-        navigationView.itemIconTintList = null // conserva colores originales de lo iconos
-
-        ///navigationView.setItemTextColor(
-            //ColorStateList.valueOf(ContextCompat.getColor(this, R.color.blue_navy))
-      //  ) //para poner el color al texto de cada item del menu
+        navigationView.itemIconTintList = null
 
 
         if (savedInstanceState == null) {
@@ -96,31 +90,24 @@ class RhMenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         }
     }
 
-    // ... dentro de tu RhMenuActivity.kt
-
-    // ... dentro de tu RhMenuActivity.kt
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        // Obtenemos el fragmento que está actualmente en el contenedor
         val currentFragment = supportFragmentManager.findFragmentById(R.id.content_frame)
 
         when (item.itemId) {
             R.id.nav_empleados -> {
-                // Si el fragmento actual YA es EmpleadosRH, no hagas nada, solo cierra el menú.
                 if (currentFragment is EmpleadosRH) {
                     drawerLayout.closeDrawer(GravityCompat.START)
                     return true
                 }
             }
             R.id.nav_permisos -> {
-                // Si el fragmento actual YA es ScrollingFragmentPermisos, no hagas nada.
                 if (currentFragment is ScrollingFragmentPermisos) {
                     drawerLayout.closeDrawer(GravityCompat.START)
                     return true
                 }
             }
             R.id.nav_contratos -> {
-                // Si el fragmento actual YA es ScrollingFragmentContratos, no hagas nada.
                 if (currentFragment is ScrollingFragmentContratos) {
                     drawerLayout.closeDrawer(GravityCompat.START)
                     return true
@@ -128,8 +115,6 @@ class RhMenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
             }
         }
 
-        // Si llegamos hasta aquí, significa que se necesita un cambio de fragmento.
-        // El resto del código se mantiene igual.
         val selectedFragment: Fragment? = when (item.itemId) {
             R.id.nav_empleados -> EmpleadosRH()
             R.id.nav_permisos -> ScrollingFragmentPermisos()
@@ -144,20 +129,16 @@ class RhMenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
             else -> getString(R.string.app_name)
         }
 
-        // Reemplaza el fragmento solo si se ha encontrado uno válido.
         selectedFragment?.let {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.content_frame, it)
                 .commit()
         }
 
-        // Actualiza el título de la barra de herramientas.
         supportActionBar?.title = fragmentTitle
 
-        // Cierra el menú lateral.
         drawerLayout.closeDrawer(GravityCompat.START)
 
-        // Devuelve 'true' para indicar que el evento ha sido manejado.
         return true
     }
 
