@@ -65,8 +65,7 @@ class EmpleadosRH : Fragment() {
         totalEmpleadosTextView = view.findViewById(R.id.totalEmpleados)
         recyclerView = view.findViewById(R.id.recyclerDepartamentos)
 
-        // Las funciones de SETUP solo configuran la apariencia, no los datos.
-        setupGenderPieChart() // Se cambió el nombre para mayor claridad
+        setupGenderPieChart()
         setupContractPieChart()
         setupbarchar()
         return view
@@ -188,15 +187,7 @@ class EmpleadosRH : Fragment() {
     private fun updateContractTypePieChart(contractList: List<TipoContrato>) {
         val entries = ArrayList<PieEntry>()
         for (contract in contractList) {
-            // --- ¡AQUÍ ESTÁ LA CORRECCIÓN! ---
-            // Debes usar el campo que contiene el total de empleados PARA ESE TIPO de contrato.
-            // Asumo que se llama 'total' o un nombre similar en tu data class TipoContrato,
-            // no 'total_empleados' que parece ser el total global.
-            // Si tu campo se llama diferente (ej: 'count', 'cantidad'), ajústalo aquí.
-            // Si el campo correcto es, de hecho, 'total_empleados', el error está en la API.
 
-            // Vamos a asumir que el campo correcto se llama 'total_empleados' pero que
-            // la API devuelve el valor por tipo.
             entries.add(PieEntry(contract.total_empleados.toFloat(), contract.tipoContrato))
         }
 
@@ -205,23 +196,16 @@ class EmpleadosRH : Fragment() {
 
         val pieData = PieData(dataSet)
 
-        // Configura el formateador para mostrar los valores como números enteros, no porcentajes.
-        // Usaremos PercentFormatter, pero lo configuraremos para mostrar el valor real.
-        pieData.setValueFormatter(PercentFormatter(pieChartContractType)) // Pasamos el gráfico
+        pieData.setValueFormatter(PercentFormatter(pieChartContractType))
         pieData.setValueTextSize(12f)
         pieData.setValueTextColor(Color.BLACK)
 
         pieChartContractType.data = pieData
 
-        // --- CAMBIO IMPORTANTE ---
-        // Si quieres ver los números absolutos (ej. 6, 5, 4) y no porcentajes (ej. 30%, 25%, 20%),
-        // DEBES DESACTIVAR 'setUsePercentValues'.
-        pieChartContractType.setUsePercentValues(false) // <--- ¡Cambiado a false!
+        pieChartContractType.setUsePercentValues(false)
 
-        // Actualiza la descripción del gráfico para que no sea engañosa
         pieChartContractType.centerText = "Contratos"
 
-        // Refresca el gráfico para que muestre los cambios
         pieChartContractType.invalidate()
     }
 

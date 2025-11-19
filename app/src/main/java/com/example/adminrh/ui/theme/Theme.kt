@@ -17,7 +17,6 @@ private val DarkColorScheme = darkColorScheme(
     onPrimary = White,
     background = Color(0xFF1C1B1F),
     surface = Color(0xFF1C1B1F)
-    // Puedes personalizar más colores aquí
 )
 
 // Paleta de colores para el MODO CLARO
@@ -26,12 +25,10 @@ private val LightColorScheme = lightColorScheme(
     onPrimary = White,
     background = White,
     surface = LightGrey
-    // Puedes personalizar más colores aquí
 )
 
-// ⭐ ESTA ES LA FUNCIÓN QUE NECESITAS LLAMAR ⭐
 @Composable
-fun AdminrhTheme( // El nombre del tema debe empezar con mayúscula
+fun AdminrhTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {

@@ -1,4 +1,3 @@
-// en com/example/api/AgeViewModel.kt
 package com.example.api
 
 import android.util.Log
@@ -15,7 +14,6 @@ import retrofit2.create
 
 class AgeViewModel : ViewModel() {
 
-    // LiveData que contendrá la lista de rangos de edad, lista para el gráfico
     private val _ageData = MutableLiveData<List<AgeRangeCount>?>()
     val ageData: LiveData<List<AgeRangeCount>?> = _ageData
 

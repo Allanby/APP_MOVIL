@@ -32,7 +32,7 @@ class departamentosViewModel : ViewModel() {
                 _loading.value = true
                 Log.d("ViewModelLoadDepartamento", "Fetching departamento...")
                 val response: ArrayList<EmployeeDepartamentResponse> = RetrofitHelper.create().create(
-                    ApiClient::class.java).getEmployeesByDepartment() // MAKE SURE THIS RETURNS List<Employee>
+                    ApiClient::class.java).getEmployeesByDepartment()
                 _totalEmpleadosDepartamento.postValue(response)
                 Log.d("Data","$response")
             } catch (e: Exception) {

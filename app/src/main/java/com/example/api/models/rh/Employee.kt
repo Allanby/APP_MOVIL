@@ -31,7 +31,6 @@ data class DetallePermisos(
 
 
 
-// Ejemplo: { "_id": "Administración", "total": 10 }
 data class EmployeeByCategory(
     @SerializedName("_id") var categoria: String? = null,
     @SerializedName("total") var total: Int? = null
@@ -39,14 +38,12 @@ data class EmployeeByCategory(
 
 
 
-// Ejemplo: { "total_activos": 15 }
 data class EmployeeActivos(
     @SerializedName("total_activos") var totalActivos: Int? = null
 )
 
 
 
-// Ejemplo: { "total_empleados": 20, "tipoContrato": "Indefinido" }
 data class EmployeeByContract(
     @SerializedName("total_empleados") var totalEmpleados: Int? = null,
     @SerializedName("tipoContrato") var tipoContrato: String? = null
@@ -54,7 +51,6 @@ data class EmployeeByContract(
 
 
 
-// Ejemplo: { "total": 5, "rango": "18-25" }
 data class EmployeeByAgeRange(
     @SerializedName("total") var total: Int? = null,
     @SerializedName("rango") var rango: String? = null

@@ -1,12 +1,10 @@
-package com.example.adminrh // O el paquete donde esté tu fragment
+package com.example.adminrh
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
@@ -23,36 +21,12 @@ class WelcomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         return ComposeView(requireContext()).apply {
-            // Estrategia para evitar fugas de memoria
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
 
-            // Establece el contenido de Compose
             setContent {
-                //  Envuelve tu pantalla en el tema de Compose
                 AdminrhTheme {
                     GerenciaScreen()
-//                    Column(
-//                        modifier = Modifier.fillMaxSize(),
-//                        horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally,
-//                        verticalArrangement = androidx.compose.foundation.layout.Arrangement.Top
-//                    )
-//                    {
-//                        TarjetaInformativa(
-//                            titulo = "Cargos",
-//                            cantidad = 25,
-//                            icon = R.drawable.ic_work_24
-//                        )
-//                        TarjetaInformativa(
-//                            titulo = "Jornadas",
-//                            cantidad = 3,
-//                            icon = R.drawable.ic_calendar_clock_24
-//                        )
-//                        TarjetaInformativa(
-//                            titulo = "Departamentos",
-//                            cantidad = 12,
-//                            icon = R.drawable.ic_apartment_24
-//                        )
-//                    }
+//
                 }
             }
         }
@@ -65,12 +39,9 @@ class CargoFragment(): Fragment(){
         savedInstanceState: Bundle?
     ): View {
         return ComposeView(requireContext()).apply {
-            // Estrategia para evitar fugas de memoria
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
 
-            // Establece el contenido de Compose
             setContent {
-                //  Envuelve tu pantalla en el tema de Compose
                 AdminrhTheme {
                     //GerenciaScreen()
                     TarjetaInformativa(titulo = "Cargos", cantidad = 25, icon = R.drawable.ic_work_24)
@@ -86,13 +57,11 @@ class JornadaFragment(): Fragment(){
         savedInstanceState: Bundle?
     ): View {
         return ComposeView(requireContext()).apply {
-            // Estrategia para evitar fugas de memoria
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
 
-            // Establece el contenido de Compose
             setContent {
                 AdminrhTheme {
-                    //GerenciaScreen()
+                    //()
                     TarjetaInformativa(titulo = "Jornadas", cantidad = 3, icon = R.drawable.ic_calendar_clock_24)
                 }
             }
@@ -106,15 +75,11 @@ class DepartamentoFragment(): Fragment(){
         savedInstanceState: Bundle?
     ): View {
         return ComposeView(requireContext()).apply {
-            // Estrategia para evitar fugas de memoria
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
 
-            // Establece el contenido de Compose
             setContent {
-                //Envuelve tu pantalla en el tema de Compose
                 AdminrhTheme {
                     GerenciaScreen()
-                    //TarjetaInformativa(titulo = "Departamentos", cantidad = 12, icon = R.drawable.ic_apartment_24)
                 }
             }
         }

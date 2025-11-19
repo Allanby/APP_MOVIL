@@ -1,4 +1,3 @@
-// en com/example/api/GenderViewModel.kt
 package com.example.api
 
 import android.util.Log
@@ -13,8 +12,6 @@ import kotlinx.coroutines.launch
 
 class GenderViewModel : ViewModel() {
 
-    // LiveData para los datos procesados del gráfico.
-    // Usaremos un Pair<Int, Int> para guardar (Hombres, Mujeres).
     private val _genderData = MutableLiveData<List<GenderCount>>()
     val genderData: LiveData<List<GenderCount>> = _genderData
 
@@ -39,7 +36,6 @@ class GenderViewModel : ViewModel() {
                 _genderData.postValue(response)
                 Log.d("Data","$response")
 
-                //Log.d("ViewModelLoadGender", "Datos procesados: Hombres=$hombres, Mujeres=$mujeres")
 
             } catch (e: Exception) {
                 Log.e("ViewModelLoadGender", "Error fetching gender data: ${e.message}", e)
