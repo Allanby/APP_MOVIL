@@ -47,9 +47,6 @@ class GerenciaViewModel : ViewModel() {
     private val _cargosUiState = MutableStateFlow(CargosUiState())
     val cargosUiState: StateFlow<CargosUiState> = _cargosUiState.asStateFlow()
 
-    // -----------------------------------------------------
-    // init — solo uno, sin duplicados
-    // -----------------------------------------------------
     init {
         fetchTotalDepartamentos()
         fetchTotalJornadas()

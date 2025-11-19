@@ -2,7 +2,6 @@ package com.example.api.models.gerencia
 
 import com.google.gson.annotations.SerializedName
 
-// Modelo para la respuesta JSON: {"total_departamentos":15}
 data class TotalDepartamentos(
     @SerializedName("total_departamentos")
     val total: Int

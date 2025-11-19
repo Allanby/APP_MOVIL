@@ -1,4 +1,4 @@
-package com.example.gerencia.ui.gerencia // Paquete actualizado
+package com.example.gerencia.ui.gerencia
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -46,7 +46,6 @@ fun GerenciaScreen(
                     CircularProgressIndicator()
                 }
             } else if (departamentosState.error != null) {
-                // Muestra un mensaje de error si algo falló
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
